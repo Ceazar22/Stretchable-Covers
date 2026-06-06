@@ -164,6 +164,19 @@
     };
   }
 
+  function withProductionTimePrice(prices, productionTimePriceCents) {
+    if (!prices) return prices;
+
+    var addOnCents = Math.max(0, Number(productionTimePriceCents) || 0);
+    if (!addOnCents) return prices;
+
+    return {
+      finalUnitCents: prices.finalUnitCents + addOnCents,
+      compareUnitCents: prices.compareUnitCents + addOnCents,
+      hasDiscount: prices.hasDiscount,
+    };
+  }
+
   function fetchCartLinePricing(cart, variantId, lineQuantity, token) {
     variantId = Number(variantId);
     lineQuantity = Math.max(1, Number(lineQuantity) || 1);
@@ -271,6 +284,15 @@
       return variantInput ? String(variantInput.value) : null;
     }
 
+    function getProductionTimePriceCents() {
+      var scope = section || document;
+      var checked = scope.querySelector('input[name="properties[Production Time]"]:checked');
+
+      if (!(checked instanceof HTMLInputElement)) return 0;
+
+      return Math.max(0, Number(checked.dataset.productionTimePriceCents) || 0);
+    }
+
     function resolvePriceContainers() {
       if (priceContainers && priceContainers.length) return priceContainers;
 
@@ -318,7 +340,8 @@
     function applyPrices(prices) {
       if (!prices) return;
 
-      var html = renderPriceHtml(prices, format);
+      var displayPrices = withProductionTimePrice(prices, getProductionTimePriceCents());
+      var html = renderPriceHtml(displayPrices, format);
       var containers = resolvePriceContainers();
 
       if (!containers.length) {
@@ -458,7 +481,7 @@
       if (!event.target || !event.target.matches) return;
       if (!event.target.matches('input, select')) return;
       if (section && !section.contains(event.target)) return;
-      scheduleRefresh(false);
+      scheduleRefresh(event.target.matches('input[name="properties[Production Time]"]'));
     });
 
     scheduleRefresh(true);

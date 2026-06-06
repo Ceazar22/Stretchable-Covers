@@ -2719,6 +2719,33 @@
   });
 </script>
 
+<script type="application/json" id="customProductionTimeProductsData">
+  {
+    "Rush Production": {
+      {%- assign rush_production_product = section.settings.rush_production_product -%}
+      {%- if rush_production_product == blank -%}
+        {%- assign rush_production_product = all_products['rush-production'] -%}
+      {%- endif -%}
+      {%- assign rush_production_cart_item = rush_production_product.selected_or_first_available_variant -%}
+      "cartId": {% if rush_production_cart_item != blank %}{{ rush_production_cart_item.id | json }}{% else %}null{% endif %},
+      "productId": {% if rush_production_product != blank %}{{ rush_production_product.id | json }}{% else %}null{% endif %},
+      "title": {% if rush_production_product != blank %}{{ rush_production_product.title | json }}{% else %}"Rush Production"{% endif %},
+      "handles": ["rush-production"]
+    },
+    "Priority Rush": {
+      {%- assign priority_rush_product = section.settings.priority_rush_product -%}
+      {%- if priority_rush_product == blank -%}
+        {%- assign priority_rush_product = all_products['priority-rush'] -%}
+      {%- endif -%}
+      {%- assign priority_rush_cart_item = priority_rush_product.selected_or_first_available_variant -%}
+      "cartId": {% if priority_rush_cart_item != blank %}{{ priority_rush_cart_item.id | json }}{% else %}null{% endif %},
+      "productId": {% if priority_rush_product != blank %}{{ priority_rush_product.id | json }}{% else %}null{% endif %},
+      "title": {% if priority_rush_product != blank %}{{ priority_rush_product.title | json }}{% else %}"Priority Rush"{% endif %},
+      "handles": ["priority-rush"]
+    }
+  }
+</script>
+
 <script>
   (function() {
     var btn = document.getElementById('mobileMenuBtn');
@@ -2851,6 +2878,20 @@
         return [];
       }
     }
+
+    function readProductionTimeProducts() {
+      var script = document.getElementById('customProductionTimeProductsData');
+      if (!script) return {};
+
+      try {
+        return JSON.parse(script.textContent || '{}') || {};
+      } catch (error) {
+        console.error('Production time products JSON error:', error);
+        return {};
+      }
+    }
+
+    var productionTimeProducts = readProductionTimeProducts();
   
     function refreshCollectionUpsells() {
       return fetch(window.location.pathname + '?section_id={{ section.id }}', {
@@ -4540,6 +4581,44 @@
   
       return getStoredDiameterValue(input);
     }
+
+    function findSelectedProductionTimeInput(form) {
+      var scope = getNearbyProductScope(form);
+      var input = scope && scope.querySelector
+        ? scope.querySelector('input[name="properties[Production Time]"]:checked')
+        : null;
+
+      if (!input) {
+        input = document.querySelector('input[name="properties[Production Time]"]:checked');
+      }
+
+      return input;
+    }
+
+    function getSelectedProductionTime(form) {
+      var input = findSelectedProductionTimeInput(form);
+      return input ? cleanCartValue(input.value) : '';
+    }
+
+    function getSelectedProductionTimeProduct(form) {
+      var productionTime = getSelectedProductionTime(form);
+      var product = productionTime ? productionTimeProducts[productionTime] : null;
+
+      if (!productionTime || productionTime === 'Standard Production') return null;
+      if (!product) {
+        product = {
+          title: productionTime,
+          handles: productionTime === 'Priority Rush' ? ['priority-rush'] : ['rush-production']
+        };
+      }
+
+      return {
+        cartId: product.cartId,
+        handles: Array.isArray(product.handles) ? product.handles : [],
+        title: product.title || productionTime,
+        productionTime: productionTime
+      };
+    }
   
     function restoreDiameterInput(input, value) {
       if (!input || !value || value === '0') return;
@@ -4679,6 +4758,7 @@
       var quantity = capturedQuantity || findVisibleQuantityValue(form);
       var existingDiameter = '';
       var diameter;
+      var productionTime;
   
       if (formData && typeof formData.get === 'function') {
         if (window.CustomDiameterFormat && typeof window.CustomDiameterFormat.readDiameterFromFormData === 'function') {
@@ -4716,6 +4796,138 @@
       if (diameter) {
         formData.set('properties[Diameter]', diameter);
       }
+
+      productionTime = getSelectedProductionTime(form);
+      if (productionTime) {
+        formData.set('properties[Production Time]', productionTime);
+      }
+    }
+
+    function parseProductJsonForCartId(product) {
+      var variants = product && Array.isArray(product.variants) ? product.variants : [];
+      var variant = variants.find(function(item) {
+        return item && item.available !== false;
+      }) || variants[0];
+
+      return variant && variant.id ? Number(variant.id) : null;
+    }
+
+    function fetchProductionTimeProductByHandle(handle) {
+      handle = String(handle || '').trim();
+      if (!handle) return Promise.resolve(null);
+
+      return fetch('/products/' + encodeURIComponent(handle) + '.js', {
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
+        .then(function(res) {
+          if (!res.ok) return null;
+          return res.json();
+        })
+        .then(function(product) {
+          return parseProductJsonForCartId(product);
+        })
+        .catch(function() {
+          return null;
+        });
+    }
+
+    function fetchProductionTimeProductFromSearch(productionTimeProduct) {
+      var title = productionTimeProduct && productionTimeProduct.title
+        ? productionTimeProduct.title
+        : productionTimeProduct.productionTime;
+
+      if (!title) return Promise.resolve(null);
+
+      return fetch('/search/suggest.json?q=' + encodeURIComponent(title) + '&resources[type]=product&resources[limit]=10', {
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      })
+        .then(function(res) {
+          if (!res.ok) return null;
+          return res.json();
+        })
+        .then(function(data) {
+          var products = data && data.resources && data.resources.results && Array.isArray(data.resources.results.products)
+            ? data.resources.results.products
+            : [];
+          var wanted = String(title || '').toLowerCase();
+          var exact = products.find(function(product) {
+            return String(product.title || '').toLowerCase() === wanted;
+          }) || products.find(function(product) {
+            return String(product.title || '').toLowerCase().indexOf(wanted) !== -1;
+          }) || products[0];
+
+          if (!exact || !exact.handle) return null;
+
+          return fetchProductionTimeProductByHandle(exact.handle);
+        })
+        .catch(function() {
+          return null;
+        });
+    }
+
+    function resolveProductionTimeCartId(productionTimeProduct) {
+      var handles = productionTimeProduct && Array.isArray(productionTimeProduct.handles)
+        ? productionTimeProduct.handles.slice()
+        : [];
+
+      if (!productionTimeProduct) return Promise.resolve(null);
+      if (productionTimeProduct.cartId) return Promise.resolve(Number(productionTimeProduct.cartId));
+
+      return handles.reduce(function(chain, handle) {
+        return chain.then(function(foundId) {
+          if (foundId) return foundId;
+          return fetchProductionTimeProductByHandle(handle);
+        });
+      }, Promise.resolve(null)).then(function(foundId) {
+        if (foundId) return foundId;
+        return fetchProductionTimeProductFromSearch(productionTimeProduct);
+      });
+    }
+
+    function addProductionTimeProduct(productionTimeProduct, quantity, sourceItem) {
+      if (!productionTimeProduct) return Promise.resolve();
+
+      quantity = Math.max(1, parseInt(quantity, 10) || 1);
+
+      return resolveProductionTimeCartId(productionTimeProduct).then(function(cartId) {
+        if (!cartId) {
+          throw new Error('Could not find the ' + productionTimeProduct.productionTime + ' product to add to cart.');
+        }
+
+        return fetch(getCartAddUrl(), {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({
+            items: [
+              {
+                id: Number(cartId),
+                quantity: quantity,
+                properties: {
+                  'Production Time': productionTimeProduct.productionTime,
+                  '_Production Time Product': 'true',
+                  '_Production Time Source Key': String((sourceItem && sourceItem.key) || ''),
+                  '_Production Time Source Product': String((sourceItem && sourceItem.product_title) || '')
+                }
+              }
+            ]
+          })
+        }).then(function(res) {
+          return res.json().then(function(data) {
+            if (!res.ok) throw data;
+            return data;
+          });
+        });
+      });
     }
   
     function submitAddToCartForm(form, submitter) {
@@ -4765,6 +4977,7 @@
       var formData = new FormData(form);
       var variantId = forceLatestVariantId(form, formData);
       var button = findAddToCartButton(form, submitter);
+      var productionTimeProduct = getSelectedProductionTimeProduct(form);
   
       if (!variantId || String(variantId).trim() === '') {
         console.error('Add to cart error: missing selected variant id. Make sure the product form has an input/select named "id" that updates when variants change.');
@@ -4800,6 +5013,9 @@
             if (!res.ok) throw data;
             return data;
           });
+        })
+        .then(function(addedItem) {
+          return addProductionTimeProduct(productionTimeProduct, formData.get('quantity'), addedItem);
         })
         .then(function() {
           if (!customizer) {
@@ -4921,6 +5137,20 @@
         "type": "product",
         "id": "best_seller_3",
         "label": "Best Sellers Cart 3"
+      },
+      {
+        "type": "header",
+        "content": "Production time products"
+      },
+      {
+        "type": "product",
+        "id": "rush_production_product",
+        "label": "Rush Production product"
+      },
+      {
+        "type": "product",
+        "id": "priority_rush_product",
+        "label": "Priority Rush product"
       },
       {
         "type": "header",
