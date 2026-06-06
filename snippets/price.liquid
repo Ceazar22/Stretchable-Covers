@@ -1,0 +1,146 @@
+
+{%- doc -%}
+  This snippet is used to render a product card.
+  It is used in the product block,featured product block, and the product card block.
+
+  @param {product} product_resource - The product to render
+  @param {boolean} [show_unit_price] - Whether to show the unit price
+  @param {boolean} [show_sale_price_first] - Whether to show the sale price first
+{%- enddoc -%}
+
+{%- liquid
+  assign show_unit_price = show_unit_price | default: false
+  assign show_sale_price_first = show_sale_price_first | default: false
+  assign selected_variant = product_resource.selected_or_first_available_variant
+  assign price = product_resource.price_max
+   assign compare_at_price = product_resource.compare_at_price_max
+
+  assign show_compare_price = false
+  if compare_at_price > price
+    assign show_compare_price = true
+  endif
+
+  if product_resource == blank
+    assign price = 1999
+  endif
+
+  # Check if variant has volume pricing
+  assign has_volume_pricing = null
+  assign price_min = null
+  assign price_max = null
+
+  # For product cards (collection/search pages), calculate min/max across all variants
+  # For product pages, only use the selected variant's pricing
+  assign is_product_card = false
+  if template.name != 'product'
+    assign is_product_card = true
+  endif
+
+  if is_product_card
+    assign price_min = product_resource.price_min
+    assign price_max = product_resource.price_max
+    assign has_volume_pricing = product_resource.quantity_price_breaks_configured? | default: false
+  endif
+
+  # Determine if currency code should be shown
+  assign use_currency = false
+  if product.handle == product_resource.handle
+    if settings.currency_code_enabled_product_pages
+      assign use_currency = true
+    endif
+  elsif settings.currency_code_enabled_product_cards
+    assign use_currency = true
+  endif
+
+  # Format all prices
+  if use_currency
+    assign price = price | money_with_currency
+    assign compare_at_price = compare_at_price | money_with_currency
+    assign price_min = price_min | money_with_currency
+    assign price_max = price_max | money_with_currency
+  else
+    assign price = price | money
+    assign compare_at_price = compare_at_price | money
+    assign price_min = price_min | money
+    assign price_max = price_max | money
+  endif
+
+  assign volume_price_preview = false
+  if template.name == 'product' and product_resource != blank
+    assign volume_price_preview = true
+  endif
+
+-%}
+
+<div
+  ref="priceContainer"
+  {% if volume_price_preview %}
+    class="volume-price-preview"
+    data-volume-price-updatable
+    data-base-price-cents="{{ selected_variant.price }}"
+  {% endif %}
+>
+  {% if volume_price_preview %}<div class="volume-price-preview__values">{% endif %}
+  {% if has_volume_pricing %}
+    {% comment %} Volume pricing display {% endcomment %}
+    {% if show_compare_price %}
+      <span role="group">
+        <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+        <span class="compare-at-price">{{- compare_at_price -}}</span>
+      </span>
+    {% endif %}
+    <span role="group">
+      <span class="visually-hidden">{{ 'content.price_range' | t }}&nbsp;</span>
+      <span class="price">{{ price_min }} - {{ price_max }}</span>
+    </span>
+  {% else %}
+    {% comment %} Standard pricing display {% endcomment %}
+    {% if show_sale_price_first == false and show_compare_price %}
+      <span role="group">
+        <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+        <span class="compare-at-price">{{- compare_at_price -}}</span>
+      </span>
+    {% endif %}
+
+    {% comment %} {% if show_compare_price %}
+      <span role="group">
+        <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
+        <span class="price">{{ price | default: '&nbsp;' }}</span>
+      </span>
+    {% else %}
+<span class="price">
+  {% if is_product_card %}
+    Starts at {{ product.price_max | money }}
+  {% else %}
+    {{ product.selected_or_first_available_variant.price | money }}
+  {% endif %}
+</span>   {% endif %} {% endcomment %}
+
+<span class="price">
+  {% if is_product_card %}Starts at {% endif %}{{ price_max }}
+</span>
+
+    {% if show_sale_price_first == true and show_compare_price %}
+      <span role="group">
+        <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+        <span class="compare-at-price">{{- compare_at_price -}}</span>
+      </span>
+    {% endif %}
+  {% endif %}
+  {%- if selected_variant.unit_price and show_unit_price %}
+    {%- liquid
+      if use_currency
+        assign unit_price = selected_variant.unit_price | money_with_currency
+      else
+        assign unit_price = selected_variant.unit_price | money
+      endif
+    -%}
+    {% render 'unit-price', price: unit_price, measurement: selected_variant.unit_price_measurement %}
+  {%- endif -%}
+  {% if volume_price_preview %}</div>{% endif %}
+  {% if volume_price_preview %}
+    <span class="volume-price-preview__spinner" role="status" hidden>
+      <span class="visually-hidden">Updating price</span>
+    </span>
+  {% endif %}
+</div>

@@ -1,0 +1,1733 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_hero_slider_7GLFPm": {
+      "type": "custom-hero-slider",
+      "blocks": {
+        "testimonial_mWeM96": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "WOW!!  You guys are awesome!  I'm so glad I found you.  You're at the very top of my list of excellent companies. The bell covers arrived and are perfect!  Just what we needed for our community band's 100th anniversary.  Will send photos after the celebration.  Thanks again",
+            "testimonial_author": "Cathy Powell",
+            "testimonial_role": "",
+            "testimonial_verified": "Verified Buyer"
+          }
+        },
+        "testimonial_WXAMpW": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "Love the waterproof exam stool covers! Just got them today from shipping and receiving. Thank you so much for your patience with me as me moved through this process! We'll be ordering many more.",
+            "testimonial_author": "Marilyn Thomas",
+            "testimonial_role": "University Health Care System",
+            "testimonial_verified": "Verified Buyer"
+          }
+        },
+        "testimonial_cU3Adb": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "The FANTASTIC covers arrived today, and I couldn't be happier with them. They are brilliant. Good quality fabric, stitching, and printing. Thank you for a quality product! And I am glad to see you promoting 'Made in the USA.' Here in Australia, my family and many of my friends and colleagues are attempting to support Made in Australia. How else do we keep jobs in our own country?\n\nI know I will be the centre of attention with these covers. When I end up with other bands, I will contact you again to get more covers!!",
+            "testimonial_author": "Sue Bradley",
+            "testimonial_role": "",
+            "testimonial_verified": "Verified Buyer"
+          }
+        },
+        "testimonial_3BxgcC": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "I just wanted to send a quick email about my order - I received the shipment today with my printed sousaphone covers and wanted to provide you with some positive feedback:\n\nI was blown away by how good they look! I put one of them on my sousaphone, and it looks fantastic. I wasn't sure how well the artwork I provided would look once it was actually printed, but the artwork came out great.\n\nI can't believe how fast y'all got them printed, shipped, and delivered to me.  I will definitely recommend you to the other sousa players in our band and to players in the Austin community.\n\nThanks again for providing fantastic customer service!",
+            "testimonial_author": "Gary Cox",
+            "testimonial_role": "",
+            "testimonial_verified": "Verified Buyer"
+          }
+        },
+        "testimonial_xinTAX": {
+          "type": "testimonial",
+          "settings": {
+            "testimonial_text": "You totally blew me away! Thank you so much for getting that done and to me in time for our event!! Definitely such a pleasure buying from you and I am so happy with the final product!! Keep up the amazing work! And thank you again for everything! You’re a great guy! Have a fantastic holiday weekend!!\nThanks a million!",
+            "testimonial_author": "SheenaRodebaugh",
+            "testimonial_role": "",
+            "testimonial_verified": "Verified Buyer"
+          }
+        },
+        "slide_bTGBkb": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/Web.webp",
+            "bg_image_1024": "shopify://shop_images/Mobile_updated_1.webp",
+            "bg_image_767": "shopify://shop_images/Mobile_updated_1_a0456a55-b39d-4422-9a20-72bc9573b5fe.webp",
+            "rating_text": "#1 Custom Cover Maker  | Cover over 450,000+ items",
+            "heading": "Custom-Printed Stretchable Covers That Make Your Brand Impossible to Ignore",
+            "subheading": "For fleets, marching bands, dealerships, medical facilities & more",
+            "button_label": "Get My Custom Cover",
+            "button_link": "shopify://collections/all-items",
+            "feature_1": "Rush Order Available",
+            "feature_icon_1": "shopify://shop_images/Last_24_Hours.svg",
+            "feature_2": "Customizable",
+            "feature_icon_2": "shopify://shop_images/Paint_Palette.svg",
+            "feature_3": "Multi-Purpose Use",
+            "feature_icon_3": "shopify://shop_images/Metamorphose.svg"
+          }
+        },
+        "slide_NwJdJk": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/Variant7.png",
+            "rating_text": "#1 Covers in the Industry | Cover over 450,000+ items",
+            "heading": "Custom Stretchable Covers That Bring Messages to Life",
+            "subheading": "For fleets, marching bands, dealerships, medical facilities & more",
+            "button_label": "Get My Custom Cover",
+            "button_link": "",
+            "feature_1": "Rush Order Available",
+            "feature_2": "Customizable",
+            "feature_3": "Multi-Purpose Use"
+          }
+        },
+        "slide_yk9YqR": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/Rectangle_436.png",
+            "rating_text": "#1 Covers in the Industry | Cover over 450,000+ items",
+            "heading": "Custom Stretchable Covers That Bring Messages to Life",
+            "subheading": "For fleets, marching bands, dealerships, medical facilities & more",
+            "button_label": "Get My Custom Cover",
+            "button_link": "",
+            "feature_1": "Rush Order Available",
+            "feature_2": "Customizable",
+            "feature_3": "Multi-Purpose Use"
+          }
+        },
+        "slide_cHL8zU": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/Variant7_6fc96061-6e96-4ce1-9397-2ad7d89958fb.png",
+            "rating_text": "#1 Covers in the Industry | Cover over 450,000+ items",
+            "heading": "Custom Stretchable Covers That Bring Messages to Life",
+            "subheading": "For fleets, marching bands, dealerships, medical facilities & more",
+            "button_label": "Get My Custom Cover",
+            "button_link": "",
+            "feature_1": "Rush Order Available",
+            "feature_2": "Customizable",
+            "feature_3": "Multi-Purpose Use"
+          }
+        },
+        "slide_TmJUk7": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/Rectangle_436_b5be077f-40e4-4140-8973-1452bef3aed4.png",
+            "rating_text": "#1 Covers in the Industry | Cover over 450,000+ items",
+            "heading": "Custom Stretchable Covers That Bring Messages to Life",
+            "subheading": "For fleets, marching bands, dealerships, medical facilities & more",
+            "button_label": "Get My Custom Cover",
+            "button_link": "",
+            "feature_1": "Rush Order Available",
+            "feature_2": "Customizable",
+            "feature_3": "Multi-Purpose Use"
+          }
+        },
+        "slide_4RxtXf": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/Variant7_dcbb4105-bea7-49b5-ae10-0db7fd812a3d.png",
+            "rating_text": "#1 Covers in the Industry | Cover over 450,000+ items",
+            "heading": "Custom Stretchable Covers That Bring Messages to Life",
+            "subheading": "For fleets, marching bands, dealerships, medical facilities & more",
+            "button_label": "Get My Custom Cover",
+            "button_link": "",
+            "feature_1": "Rush Order Available",
+            "feature_2": "Customizable",
+            "feature_3": "Multi-Purpose Use"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_mWeM96",
+        "testimonial_WXAMpW",
+        "testimonial_cU3Adb",
+        "testimonial_3BxgcC",
+        "testimonial_xinTAX",
+        "slide_bTGBkb",
+        "slide_NwJdJk",
+        "slide_yk9YqR",
+        "slide_cHL8zU",
+        "slide_TmJUk7",
+        "slide_4RxtXf"
+      ],
+      "name": "Custom Cover Slider",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "ups_icon_bar_7UnGza": {
+      "type": "ups-icon-bar",
+      "blocks": {
+        "item_DrKUdf": {
+          "type": "item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/Vector_3cc7055f-ee0b-42f3-be31-a5b1368f3d70.svg",
+            "heading": "Fully Custom Covers",
+            "text": "Made to your exact size and specifications."
+          }
+        },
+        "item_xix4kk": {
+          "type": "item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/Vector_1_930105c0-ace6-4d16-84c9-02ccab6129b4.svg",
+            "heading": "Fast Production",
+            "text": "Quick turnaround without compromising quality."
+          }
+        },
+        "item_Rc9TGn": {
+          "type": "item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/Vector_2_efaffe70-fdad-45b8-acb0-2cf7d9904ff2.svg",
+            "heading": "Repeat Customers Worldwide",
+            "text": "Trusted by 50,000+ clients across the globe."
+          }
+        },
+        "item_Wpj7qV": {
+          "type": "item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/Vector_3_7942513a-b518-45b0-b4ca-593a533197cf.svg",
+            "heading": "Order Just 1 or 10,000",
+            "text": "No minimum order required."
+          }
+        },
+        "item_bdxxUK": {
+          "type": "item",
+          "settings": {
+            "custom_icon": "shopify://shop_images/Vector_4.svg",
+            "heading": "Made with Premium Microfiber",
+            "text": "Soft, durable, and highest quality."
+          }
+        }
+      },
+      "block_order": [
+        "item_DrKUdf",
+        "item_xix4kk",
+        "item_Rc9TGn",
+        "item_Wpj7qV",
+        "item_bdxxUK"
+      ],
+      "name": "USP Icon Bar",
+      "settings": {
+        "bg_color": "#ffffff",
+        "border_color": "#1a2438",
+        "border_width": 2,
+        "icon_color": "#223b63",
+        "heading_color": "#111111",
+        "text_color": "#333333"
+      }
+    },
+    "custom_section_collection_DW3gt8": {
+      "type": "custom-section-collection",
+      "blocks": {
+        "slide_x4fqbH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000008093.png",
+            "text": "Trucks & Cars",
+            "url": "shopify://collections/steering-wheel-covers"
+          }
+        },
+        "slide_q9pAm4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000008094.png",
+            "text": "Marine & Boating",
+            "url": "shopify://collections/boat-steering-wheel-covers"
+          }
+        },
+        "slide_EicXxU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_438.png",
+            "text": "Instruments Equipments",
+            "url": "shopify://collections/band-instrument-bell-covers"
+          }
+        },
+        "slide_DWMgjW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000008092.png",
+            "text": "Safety Programs",
+            "url": "shopify://collections/safety-programs"
+          }
+        },
+        "slide_CrADzE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000008095.png",
+            "text": "Seating & Furniture",
+            "url": "shopify://collections/seating-furniture"
+          }
+        }
+      },
+      "block_order": [
+        "slide_x4fqbH",
+        "slide_q9pAm4",
+        "slide_EicXxU",
+        "slide_DWMgjW",
+        "slide_CrADzE"
+      ],
+      "name": "All Collections Slider",
+      "settings": {
+        "heading": "Shop By Collections",
+        "subheading": "Find the cover built for your application or start a fully custom design.",
+        "view_all_text": "View All",
+        "view_all_link": "shopify://collections/all",
+        "enable_autoplay": false,
+        "autoplay_speed": 4,
+        "section_bg": "#ffffff",
+        "heading_color": "#0f2e53",
+        "subheading_color": "#1f1f1f",
+        "link_color": "#111111",
+        "card_radius": 6,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "custom_two_section_xezL3r": {
+      "type": "custom-two-section",
+      "blocks": {
+        "feature_z8K6gw": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector.svg",
+            "title": "True Stretch Fit, Not One-Size",
+            "text": "Designed for a precise fit, durable performance, and standout branding—trusted by bands, brands, and professionals across industries."
+          }
+        },
+        "feature_UKfy3Y": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_1.svg",
+            "title": "Built for Real-World Use",
+            "text": "Designed to withstand repeated use in marching bands, events, marine environments, and industrial settings."
+          }
+        },
+        "feature_q36GVQ": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_2.svg",
+            "title": "Custom Branding That Pops",
+            "text": "High-quality printing delivers bold colors and crisp logos that stand out in motion, on camera, and up close."
+          }
+        },
+        "feature_Ka37mh": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_3.svg",
+            "title": "Trusted Across Industries",
+            "text": "Proven performance for music programs, sports teams, parades, corporations, and professionals worldwide."
+          }
+        }
+      },
+      "block_order": [
+        "feature_z8K6gw",
+        "feature_UKfy3Y",
+        "feature_q36GVQ",
+        "feature_Ka37mh"
+      ],
+      "name": "Custom Two Section",
+      "settings": {
+        "rating_stars": "★★★★★",
+        "rating_text": "Trusted by 50,000 + customers",
+        "heading": "What Makes Our Stretchable<br> Covers Different",
+        "description": "Designed for a precise fit, durable performance, and standout branding—trusted by bands, brands, and professionals across industries.",
+        "main_image": "shopify://shop_images/Frame_1000007667.png",
+        "section_bg": "#ffffff",
+        "stars_color": "#eb891b",
+        "rating_text_color": "#555555",
+        "heading_color": "#0f2e53",
+        "description_color": "#333333",
+        "icon_color": "#183b6b",
+        "feature_title_color": "#1f1f1f",
+        "feature_text_color": "#4a4a4a",
+        "divider_color": "#d7d7d7",
+        "image_radius": 12
+      }
+    },
+    "custom_section_product_Chehbq": {
+      "type": "custom-section-product",
+      "blocks": {
+        "product_slide_tM6RRX": {
+          "type": "product_slide",
+          "settings": {
+            "product": "aa-stretchable-covers-xxlfc-jumbo-24-28-full-coverage-printing-on-white-material",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Product Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_tr9zJL": {
+          "type": "product_slide",
+          "settings": {
+            "product": "aaastretchable-covers-xxl-jumbo-24-28",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Product Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_6A34NR": {
+          "type": "product_slide",
+          "settings": {
+            "product": "c-stretchable-covers-l-standard-18-20",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Product Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_6djygi": {
+          "type": "product_slide",
+          "settings": {
+            "product": "b-stretchable-covers-xl-21-23",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Product Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_aQey4y": {
+          "type": "product_slide",
+          "settings": {
+            "product": "d-stretchable-covers-m-standard-14-17",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Product Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_6CQ4mC": {
+          "type": "product_slide",
+          "settings": {
+            "product": "f-stretchable-covers-xs-standard-9-11",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Product Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_DQqWcw": {
+          "type": "product_slide",
+          "settings": {
+            "product": "g-stretchable-covers-xxs-standard-7-8-5",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Product Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_mQUd6G": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "aa-stretchable-covers-xxlfc-jumbo-24-28-full-coverage-printing-on-white-material",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_TWMA3J": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "aaastretchable-covers-xxl-jumbo-24-28",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_eN8M3N": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "c-stretchable-covers-l-standard-18-20",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_xHtdPX": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "b-stretchable-covers-xl-21-23",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_7RkDH6": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "d-stretchable-covers-m-standard-14-17",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_jkJHC7": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "f-stretchable-covers-xs-standard-9-11",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_MKHFep": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "g-stretchable-covers-xxs-standard-7-8-5",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_fceCaQ": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "c-stretchable-covers-l-standard-18-20",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_FAXdkX": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "b-stretchable-covers-xl-21-23",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_Y7HGzt": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "aaastretchable-covers-xxl-jumbo-24-28",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_MDLVEq": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "aa-stretchable-covers-xxlfc-jumbo-24-28-full-coverage-printing-on-white-material",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        },
+        "product_slide_JynADy": {
+          "type": "product_slide",
+          "disabled": true,
+          "settings": {
+            "product": "a-stretchable-covers-xxxl-jumboplus-29-34",
+            "badge_text": "Most Ordered",
+            "custom_title": "",
+            "rating_stars": "★★★★★",
+            "rating_text": "5.0",
+            "meta_left": "Diameter",
+            "meta_right": "30\" - 33\""
+          }
+        }
+      },
+      "block_order": [
+        "product_slide_tM6RRX",
+        "product_slide_tr9zJL",
+        "product_slide_6A34NR",
+        "product_slide_6djygi",
+        "product_slide_aQey4y",
+        "product_slide_6CQ4mC",
+        "product_slide_DQqWcw",
+        "product_slide_mQUd6G",
+        "product_slide_TWMA3J",
+        "product_slide_eN8M3N",
+        "product_slide_xHtdPX",
+        "product_slide_7RkDH6",
+        "product_slide_jkJHC7",
+        "product_slide_MKHFep",
+        "product_slide_fceCaQ",
+        "product_slide_FAXdkX",
+        "product_slide_Y7HGzt",
+        "product_slide_MDLVEq",
+        "product_slide_JynADy"
+      ],
+      "name": "Selected Products Slider",
+      "settings": {
+        "heading": "Best-Selling Custom Covers",
+        "subheading": "Our most-ordered sizes ready to customize with your design.",
+        "view_all_text": "View All",
+        "view_all_link": "shopify://collections/best-seller",
+        "enable_autoplay": true,
+        "autoplay_speed": 4,
+        "section_bg": "#ffffff",
+        "heading_color": "#0f2e53",
+        "subheading_color": "#000000",
+        "link_color": "#1a1a1a",
+        "title_color": "#1a1a1a",
+        "meta_color": "#5f5f5f",
+        "price_color": "#1f1f1f",
+        "stars_color": "#eb891b",
+        "badge_bg": "#eb891b",
+        "badge_color": "#ffffff",
+        "card_radius": 6
+      }
+    },
+    "custom_section_static_Nq9Tby": {
+      "type": "custom-section-static",
+      "blocks": {
+        "image_item_MbcBAd": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000007667_d25b69a2-203d-4383-b363-f30b50cb2369.png",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "4",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_7tNNpq": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000007708.png",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "1",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_QapE6T": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/unnamed_5.jpg",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "1",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_DjbCVn": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_m7h54vm7h54vm7h5.png",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "1",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_H9Lqjd": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000007706.png",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "3",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_m6xRKC": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000007707.png",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "2",
+            "mobile_span": "1"
+          }
+        }
+      },
+      "block_order": [
+        "image_item_MbcBAd",
+        "image_item_7tNNpq",
+        "image_item_QapE6T",
+        "image_item_DjbCVn",
+        "image_item_H9Lqjd",
+        "image_item_m6xRKC"
+      ],
+      "name": "Customer Gallery Mosaic",
+      "settings": {
+        "stars_text": "★★★★★",
+        "trusted_text": "450,000+ Shipped",
+        "heading": "Thousands Of Customers And Repeated Use",
+        "description": "Trusted by thousands of customers and proven through years of repeated, real-world use across multiple industries.",
+        "section_bg": "#ffffff",
+        "stars_color": "#eb891b",
+        "trusted_text_color": "#1f1f1f",
+        "heading_color": "#0f2e53",
+        "description_color": "#444444",
+        "grid_gap": 8,
+        "row_height": 280,
+        "row_height_mobile": 150,
+        "image_radius": 6,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custon_section_faq_WBYxQJ": {
+      "type": "custon-section-faq",
+      "blocks": {
+        "faq_item_H9CaVw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is there a minimum order?",
+            "answer": "<p>No. There are no minimum order requirements — order a single cover or several hundred. You can mix and match sizes, designs, and quantities however you'd like, with no setup fees. <br/><br/><strong>And the more you order, the more you save</strong> — quantity discounts<br/>kick in automatically as your order size grows, so larger orders (schools, marching bands,<br/>corporate giveaways, dealer co-ops, safetyprograms) get progressively better per-unit pricing.<br/></p>",
+            "category": "category_1"
+          }
+        },
+        "faq_item_bN3ngd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you charge for artwork setup?",
+            "answer": "<p>No setup charges. We'll help you size your artwork to fit our covers at no additional cost. <br/><br/>Our rule of thumb is simple: whatever you send us is what we'll print. For the best results, send us the highest-resolution artwork you have — vector files (.ai, .eps, .pdf) work best, and high-resolution raster files (300+ DPI) also produce excellent results.<br/><br/>We can discuss possible charges if we have to recreate artwork or clean up art of lower resolution.</p>",
+            "category": "category_1"
+          }
+        },
+        "faq_item_L4PKaA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the largest imprint you can print?",
+            "answer": "<p>Our maximum imprint area is <strong>29 inches</strong> in diameter, available on our XXXL JumboPLUS and XXL Jumbo covers.</p>",
+            "category": "category_1"
+          }
+        },
+        "faq_item_kiKHLn": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What kind of art files do you accept?",
+            "answer": "<p>We accept CorelDraw - .CDR, Adobe Illustrator - .AI, Adobe .EPS (Encapsulated PostScript) files, .PDF, .GIF, .JPG. </p><p>All type fonts should be converted to artwork or curves. All GIF and JPG files - least desired - should be high in resolution, at least 300 DPI</p>",
+            "category": "category_1"
+          }
+        },
+        "faq_item_xLXzGb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I know what size cover I need?",
+            "answer": "<p>Measure the diameter of the item you want covered at its widest point, then choose the size class that includes that measurement. <br/><br/>If you're between sizes, choose the smaller one — our covers stretch but cannot shrink. </p><p><br/>If you're unsure, contact us with your measurement and the item type and we'll recommend the right fit.</p>",
+            "category": "category_1"
+          }
+        },
+        "faq_item_erBhxE": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will I see a proof before you print my order?",
+            "answer": "<p>For most custom orders, no as there is no need. What you design on our site will be what you receive IRL (in real life).<br/><br/>If your company requires a proof, we'll send you a digital proof for approval before going to production so you<br/>can confirm the artwork looks the way you want it.</p>",
+            "category": "category_1"
+          }
+        },
+        "faq_item_wJAcxt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What color is the cover material?",
+            "answer": "<p>All of our covers start as white fabric, and we print your chosen background color (and design) directly onto them using dye-sublimation. <br/><br/>We can produce virtually any background color you want — just provide a Pantone (PMS) color number or RGB color number combination (3 numbers) as a reference</p>",
+            "category": "category_2"
+          }
+        },
+        "faq_item_cQTBya": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can you match colors exactly?",
+            "answer": "<p>Not exactly, but we can usually get very close.<br/><br/>Dye-sublimation printing has a slightly different color profile than offset or screen printing, so an exact 1-to-1 match isn't guaranteed. If color precision is critical to you, we recommend ordering a small test print first. </p>",
+            "category": "category_2"
+          }
+        },
+        "faq_item_Q6zDDt": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can you match my uniform, team, or paint colors?",
+            "answer": "<p>Yes (as close as possible), with one caveat. If you can provide an exact color number (Pantone PMS, hex, RGB, etc.), we'll print to that reference and get as close as the process allows. <br/><br/>If you don't have a color number but you do have a physical sample — a swatch of fabric, a paint chip, a uniform piece — mail it to us and we'll match it as closely as possible</p>",
+            "category": "category_2"
+          }
+        },
+        "faq_item_3MH39V": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do the background colors or patterns cover the entire front-facing portion of the item?",
+            "answer": "<p>Yes, in most cases. As long as you provide the correct diameter of the item being covered, your background color or design will be sized to cover the entire front-facing surface. <br/><br/>On some of our smaller sizes, you may see a small white border around the very edge — let us know in advance if this is a concern and we'll do our best to minimize it.</p>",
+            "category": "category_2"
+          }
+        },
+        "faq_item_y9XTFA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can you print all the way to the elastic edge?",
+            "answer": "<p>Not quite. During production, covers are placed on printing plates, and the portion that wraps around the underside of each plate cannot be printed. <br/><br/>Your design will fully cover the front-facing surface of the item, but the underside (where the elastic gathers) will remain unprinted. This is normal and consistent across the industry for covers of this style.</p>",
+            "category": "category_2"
+          }
+        },
+        "faq_item_7CAb6e": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the covers made of?",
+            "answer": "<p>Highest-quality polyester microfiber. It's durable, machine washable, and holds full-color dye-sublimation prints beautifully without fading or cracking.</p>",
+            "category": "category_3"
+          }
+        },
+        "faq_item_P3EcPe": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where are your covers manufactured? Made in the USA.",
+            "answer": "<p>All materials are shipped from within the USA, all cutting and sewing is performed in the USA, and all dye-sublimation decorating is done in the USA. 100% American-made.</p>",
+            "category": "category_3"
+          }
+        },
+        "faq_item_kyekxp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your covers machine washable?",
+            "answer": "<p>Yes. Our microfiber covers are machine washable on a gentle cycle in cold water. We recommend air drying or tumble drying on low heat to maximize the life of the print and elastic. <br/><br/>NOTE: Never use bleach.</p>",
+            "category": "category_3"
+          }
+        },
+        "faq_item_RnHxHE": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your standard production time?",
+            "answer": "<p>Our standard production time is <strong>15–20 working days,</strong> the fastest in the industry for fully custom-printed covers with no minimums.</p>",
+            "category": "category_4"
+          }
+        },
+        "faq_item_kkikka": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer rush production?",
+            "answer": "<p>Yes. If you need your order sooner than 15 working days, we offer a <strong>25% RUSH CHARGE</strong> option calculated on the merchandise total only. <br/><br/>(Rush charges don't apply to shipping, you'll still have several shipping speed options to choose from at checkout, so you can dial in the right balance of cost and speed.)</p>",
+            "category": "category_4"
+          }
+        },
+        "faq_item_PLhkqQ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What shipping carriers do you use?",
+            "answer": "<p>It depends on the order. We use USPS for most international shipments and smaller domestic orders. For larger U.S. orders, we ship via FedEx or UPS — whichever offers the best combination of delivery time and value for your destination. </p>",
+            "category": "category_4"
+          }
+        },
+        "faq_item_WGhw4W": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you accept purchase orders?",
+            "answer": "<p>We don't accept POs as a standalone form of payment, but we are happy to work with PO-based purchasing as long as a credit card is provided in advance to keep on file. With a card on file, you may use a PO and pay by check within 15 days of the invoice date. <br/><br/>If the balance is not paid by day 15, we'll charge the card on file. This policy allows us to serve schools, government agencies, and corporate buyers who require PO documentation while protecting both sides.</p>",
+            "category": "category_4"
+          }
+        },
+        "faq_item_zJcrn6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Because every cover is custom-printed specifically for your order, we are unable to accept returns or exchanges. The only exception is when there is a clear error on our part — in that case, we'll make it right immediately at no cost to you. <br/><br/>We strongly encourage you to review your artwork carefully before approving production.</p>",
+            "category": "category_4"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_H9CaVw",
+        "faq_item_bN3ngd",
+        "faq_item_L4PKaA",
+        "faq_item_kiKHLn",
+        "faq_item_xLXzGb",
+        "faq_item_erBhxE",
+        "faq_item_wJAcxt",
+        "faq_item_cQTBya",
+        "faq_item_Q6zDDt",
+        "faq_item_3MH39V",
+        "faq_item_y9XTFA",
+        "faq_item_7CAb6e",
+        "faq_item_P3EcPe",
+        "faq_item_kyekxp",
+        "faq_item_RnHxHE",
+        "faq_item_kkikka",
+        "faq_item_PLhkqQ",
+        "faq_item_WGhw4W",
+        "faq_item_zJcrn6"
+      ],
+      "name": "FAQ Category Accordion",
+      "settings": {
+        "heading": "FAQs",
+        "category_1": "Ordering, Pricing & Artwork",
+        "category_2": "Colors & Color Matching",
+        "category_3": "Product, Materials & Care",
+        "category_4": "Production, Shipping, Payment & Returns",
+        "category_5": "",
+        "category_6": "",
+        "bottom_text": "Have more questions? Reach out so we can assist you.",
+        "button_label": "Contact Us",
+        "button_link": "shopify://pages/contact",
+        "section_bg": "#ffffff",
+        "heading_color": "#0f2e53",
+        "category_box_bg": "#ffffff",
+        "category_divider_color": "#e7e7e7",
+        "category_text_color": "#6a6a6a",
+        "category_active_text_color": "#1f1f1f",
+        "closed_bg": "#0f2e53",
+        "closed_text": "#ffffff",
+        "open_bg": "#f3f4f5",
+        "open_text": "#1f1f1f",
+        "answer_color": "#7a7a7a",
+        "bottom_text_color": "#1f1f1f",
+        "button_bg": "#eb891b",
+        "button_text": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "custom_section_marque_QTHnya": {
+      "type": "custom-section-marque",
+      "blocks": {
+        "logo_inbUiX": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/DUKE_ENERGY_1_c168a1da-69e6-4a13-bad9-b3664a0dbc09.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_QCcThf": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Ryder_1_1f5fcca6-302d-4de6-9edb-2fd49cbac2d7.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_6awVVG": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/image_32_ba5283b9-57ff-4551-8aeb-8979132b9661.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_3wQQbA": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/image_36_66089adf-d2f3-4d34-8262-74285e689264.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_xyCE3F": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/image_34_42cc10fa-a3b4-4296-9fa7-b16d6f0825ef.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_WUBQPh": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/RUSH_Trucks_3_330e248a-ef53-4c83-8f93-91c48514f8b6.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_qQz3ME": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Penske_2.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_X4fatA": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/KIA_1.jpg",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_LpQYUF": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Pepsi_Safety.jpg",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_inbUiX",
+        "logo_QCcThf",
+        "logo_6awVVG",
+        "logo_3wQQbA",
+        "logo_xyCE3F",
+        "logo_WUBQPh",
+        "logo_qQz3ME",
+        "logo_X4fatA",
+        "logo_LpQYUF"
+      ],
+      "name": "Brand Logo Bar",
+      "settings": {
+        "heading": "Partnered By Hundred Brands Worldwide",
+        "section_bg": "#f9fdff",
+        "heading_color": "#1f1f1f",
+        "border_color": "#1a1a1a",
+        "border_width": 2,
+        "logo_max_height": 66,
+        "logo_gap": 36,
+        "logo_gap_mobile": 18,
+        "marquee_duration": 22,
+        "pause_on_hover": true
+      }
+    },
+    "custom_section_testimonial_VjHWNJ": {
+      "type": "custom-section-testimonial",
+      "blocks": {
+        "testimonial_cC86GR": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_441.png",
+            "quote": "Thank you so much.  I received my Sousaphone covers today and they are PERFECT. Absolutely what I was looking for.\nThe material is great and goes on the instruments so easily. I just love them.\nI will be sure to tell other bands about Stretchable Covers. I can't wait to show them off.\nSuper job. Thanks!",
+            "author": "Melita Quesada",
+            "role": "University Health Care System"
+          }
+        },
+        "testimonial_jhyrQy": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "WOW!! You guys are awesome! I'm so glad I found you. You are the very top of my list of excellent companies. The bell covers arrived and are perfect! Just what we needed for our community band's 100th anniversary. We can't put to words the celebration. Thanks again!",
+            "author": "Cathy Powell",
+            "role": "University Health Care System"
+          }
+        },
+        "testimonial_DbttEc": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "OMG!! Are you a magician?! That's amazing, and they're GORGEOUS! THANK YOU!!!",
+            "author": "Cynthia Stanton",
+            "role": "University Health Care System"
+          }
+        },
+        "testimonial_4M9M8i": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Received the covers yesterday and they are wonderful. Thank you for all of your help. \nAs a retired band director, I appreciate your fast service and the ability to order less than 10. \nHopefully we can work together with another cash strapped program in the future. Again, we really appreciate you.",
+            "author": "SueCechal",
+            "role": "University Health Care System"
+          }
+        },
+        "testimonial_JMdpQp": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Ordered 2 bell covers to see how they were in both printing and sizing. They were perfect and the kids loved them. \nNeeded 3 more and wanted them before our next game so I placed my order on Sunday. I emailed the company and got a response before they opened Monday morning. I was told it'll be handled. They weren't lying. Within a few hours I had order confirmation and shipping confirmation with upgraded shipping to get them to me a day early. \nTo say that they prioritize customer service and satisfaction over anything else is an understatement. My order was pretty small but it still mattered and that is awesome. \nI wish more businesses operated like this these days. Will definitely be ordering from this company next time. Thank you!",
+            "author": "Joe Stevenson",
+            "role": "University Health Care System"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_cC86GR",
+        "testimonial_jhyrQy",
+        "testimonial_DbttEc",
+        "testimonial_4M9M8i",
+        "testimonial_JMdpQp"
+      ],
+      "name": "Testimonial Slider",
+      "settings": {
+        "stars_text": "★★★★★",
+        "trusted_text": "Trusted by 450,000 + customers",
+        "heading": "Why Our Customers Keep Coming Back",
+        "description": "Thousands of customers. Repeated use.<br> Shared by our customers.",
+        "desktop_cards": "4",
+        "section_bg": "#ffffff",
+        "stars_color": "#eb891b",
+        "trusted_color": "#1f1f1f",
+        "heading_color": "#0f2e53",
+        "description_color": "#666666",
+        "card_bg": "#ffffff",
+        "quote_icon_color": "#0f2e53",
+        "quote_color": "#444444",
+        "author_color": "#1f1f1f",
+        "role_color": "#1f1f1f",
+        "arrow_bg": "#f3f3f3",
+        "arrow_color": "#7a7a7a",
+        "arrow_border": "#d5d5d5",
+        "arrow_hover_bg": "#0f2e53",
+        "arrow_hover_color": "#ffffff",
+        "line_color": "#d8d8d8"
+      }
+    },
+    "custom_section_newspaper_UhHiwa": {
+      "type": "custom-section-newspaper",
+      "name": "Newsletter Subscribe Bar",
+      "settings": {
+        "heading": "Stay Updated With Stretchable Covers",
+        "subheading": "Be the first to know about new designs, custom solutions, and product updates.",
+        "placeholder": "Enter your email",
+        "button_label": "Subscribe",
+        "success_text": "Thanks for subscribing.",
+        "section_bg": "#123764",
+        "heading_color": "#ffffff",
+        "subheading_color": "#d9e4f2",
+        "input_bg": "#123764",
+        "input_border": "#ffffff",
+        "input_text": "#ffffff",
+        "placeholder_color": "#d9e4f2",
+        "button_bg": "#f39a1e",
+        "button_text": "#ffffff",
+        "success_color": "#b9f6ca",
+        "error_color": "#ffd1d1"
+      }
+    },
+    "slideshow_m9Nq9Y": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_xxWXgf": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/Homepage_Banners.jpg",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-6",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 48,
+            "padding-block-end": 48,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
+          "blocks": {
+            "text_H3hFTy": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h1>Custom Stretchable Covers That Bring Messages to Life</h1>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_tYAymB": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Introducing our latest products, made especially for the season. Shop your favorites before they're gone!</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 20,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_phRE8P": {
+              "type": "button",
+              "settings": {
+                "label": "Shop now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_H3hFTy",
+            "text_tYAymB",
+            "button_phRE8P"
+          ]
+        },
+        "slide_zBiADT": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": false,
+            "color_scheme": "scheme-6",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 48,
+            "padding-block-end": 48,
+            "padding-inline-start": 48,
+            "padding-inline-end": 48
+          },
+          "blocks": {
+            "text_TWiVke": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>Bestsellers</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_kVMk4w": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Discover the bestsellers that have captured the hearts of our customers with their perfect blend of functionality and style.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 20,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "button_gWXUra": {
+              "type": "button",
+              "settings": {
+                "label": "Shop now",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_TWiVke",
+            "text_kVMk4w",
+            "button_gWXUra"
+          ]
+        }
+      },
+      "block_order": [
+        "slide_xxWXgf",
+        "slide_zBiADT"
+      ],
+      "disabled": true,
+      "name": "t:names.slideshow_full_frame",
+      "settings": {
+        "display_mode": "full_frame",
+        "section_width": "full-width",
+        "full_frame_on_mobile": false,
+        "slideshow_gap": 12,
+        "corner_radius": 0,
+        "slide_height": "medium",
+        "content_position": "on-media",
+        "color_scheme": "",
+        "icons_style": "none",
+        "icons_shape": "none",
+        "slideshow_controls_style": "dots",
+        "autoplay": false,
+        "autoplay_speed": 4,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "hero_jVaWmY": {
+      "type": "hero",
+      "blocks": {
+        "text_YLPk4p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Browse our latest products</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_H9gpTf": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop all",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YLPk4p",
+        "button_H9gpTf"
+      ],
+      "disabled": true,
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/Rectangle_436.jpg",
+        "media_type_2": "image",
+        "image_2": "shopify://shop_images/Rectangle_436.jpg",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 24,
+        "section_width": "page-width",
+        "section_height": "medium",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "gradient_direction": "to bottom",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 100,
+        "padding-block-end": 72
+      }
+    },
+    "product_list_fa6P9H": {
+      "type": "product-list",
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "name": "t:names.header",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "align_baseline": true,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_list_text_YFtzcL": {
+              "type": "_product-list-text",
+              "name": "t:names.collection_title",
+              "settings": {
+                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_list_button_MWeP9V": {
+              "type": "_product-list-button",
+              "name": "t:names.product_list_button",
+              "settings": {
+                "label": "View all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_list_text_YFtzcL",
+            "product_list_button_MWeP9V"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_677WP3": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_YXxMTj": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_JQzVV4": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_677WP3",
+            "product_title_YXxMTj",
+            "price_JQzVV4"
+          ]
+        }
+      },
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 8,
+        "columns": 4,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 8,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "custom_testimonial_kX73jN": {
+      "type": "custom-testimonial",
+      "blocks": {
+        "testimonial_EACrp4": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/5e3c21adc5388b38f41c00f0075ac354c008d42f.png",
+            "review_text": "\"Love the waterproof exam stool covers! Just got them today from shipping and receiving. Thank you so much for your patience with me as me moved through this process! We'll be ordering many more.\"",
+            "author_name": "Marilyn Thomas",
+            "author_info": "University Health Care System"
+          }
+        },
+        "testimonial_EfWb3w": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/5e3c21adc5388b38f41c00f0075ac354c008d42f.png",
+            "review_text": "\"Love the waterproof exam stool covers! Just got them today from shipping and receiving. Thank you so much for your patience with me as me moved through this process! We'll be ordering many more.\"",
+            "author_name": "Marilyn Thomas",
+            "author_info": "University Health Care System"
+          }
+        },
+        "testimonial_VBeqWU": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/5e3c21adc5388b38f41c00f0075ac354c008d42f.png",
+            "review_text": "\"Love the waterproof exam stool covers! Just got them today from shipping and receiving. Thank you so much for your patience with me as me moved through this process! We'll be ordering many more.\"",
+            "author_name": "Marilyn Thomas",
+            "author_info": "University Health Care System"
+          }
+        },
+        "testimonial_GQLbXr": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/5e3c21adc5388b38f41c00f0075ac354c008d42f.png",
+            "review_text": "\"Love the waterproof exam stool covers! Just got them today from shipping and receiving. Thank you so much for your patience with me as me moved through this process! We'll be ordering many more.\"",
+            "author_name": "Marilyn Thomas",
+            "author_info": "University Health Care System"
+          }
+        },
+        "testimonial_xD9MJt": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/5e3c21adc5388b38f41c00f0075ac354c008d42f.png",
+            "review_text": "\"Love the waterproof exam stool covers! Just got them today from shipping and receiving. Thank you so much for your patience with me as me moved through this process! We'll be ordering many more.\"",
+            "author_name": "Marilyn Thomas",
+            "author_info": "University Health Care System"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_EACrp4",
+        "testimonial_EfWb3w",
+        "testimonial_VBeqWU",
+        "testimonial_GQLbXr",
+        "testimonial_xD9MJt"
+      ],
+      "disabled": true,
+      "name": "Custom Testimonials",
+      "settings": {
+        "trust_text": "Trusted by 450,000 + customers",
+        "heading": "Why Our Customers Keep Coming Back",
+        "subheading": "Stories, feedback, and honest experiences from the people we serve."
+      }
+    }
+  },
+  "order": [
+    "custom_hero_slider_7GLFPm",
+    "ups_icon_bar_7UnGza",
+    "custom_section_collection_DW3gt8",
+    "custom_two_section_xezL3r",
+    "custom_section_product_Chehbq",
+    "custom_section_static_Nq9Tby",
+    "custon_section_faq_WBYxQJ",
+    "custom_section_marque_QTHnya",
+    "custom_section_testimonial_VjHWNJ",
+    "custom_section_newspaper_UhHiwa",
+    "slideshow_m9Nq9Y",
+    "hero_jVaWmY",
+    "product_list_fa6P9H",
+    "custom_testimonial_kX73jN"
+  ]
+}
