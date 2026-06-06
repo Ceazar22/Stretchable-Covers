@@ -227,6 +227,86 @@
     return true;
   }
 
+  function getProductionTimeValue(item) {
+    var props = item && item.properties ? item.properties : {};
+    return String(props['Production Time'] || props['production time'] || '').trim();
+  }
+
+  function getProductionTimeAddOnCents(productionTime) {
+    productionTime = String(productionTime || '').trim().toLowerCase();
+    if (productionTime === 'rush production') return 3000;
+    if (productionTime === 'priority rush') return 5500;
+    return 0;
+  }
+
+  function isProductionTimeProduct(item) {
+    var props = item && item.properties ? item.properties : {};
+    var marker = String(props['_Production Time Product'] || '').trim().toLowerCase();
+    var title = String((item && (item.product_title || item.title)) || '').trim().toLowerCase();
+
+    return marker === 'true' || title === 'rush production' || title === 'priority rush';
+  }
+
+  function getProductionTimeSourceKey(item) {
+    var props = item && item.properties ? item.properties : {};
+    return String(props['_Production Time Source Key'] || '').trim();
+  }
+
+  function getCartVisibleItems(cart) {
+    return ((cart && cart.items) || []).filter(function(item) {
+      return !isProductionTimeProduct(item);
+    });
+  }
+
+  function getVisibleItemCount(cart) {
+    return getCartVisibleItems(cart).reduce(function(total, item) {
+      return total + (Number(item.quantity || 0) || 0);
+    }, 0);
+  }
+
+  function findProductionTimeProductForItem(cart, item) {
+    var items = (cart && cart.items) || [];
+    var sourceKey = String(item && item.key ? item.key : '').trim();
+
+    if (!sourceKey) return null;
+
+    return items.find(function(candidate) {
+      return isProductionTimeProduct(candidate) && getProductionTimeSourceKey(candidate) === sourceKey;
+    }) || null;
+  }
+
+  function findSourceItemForProductionTimeProduct(cart, productionTimeItem) {
+    var sourceKey = getProductionTimeSourceKey(productionTimeItem);
+    if (!sourceKey) return null;
+
+    return getCartVisibleItems(cart).find(function(item) {
+      return String(item.key || '') === sourceKey;
+    }) || null;
+  }
+
+  function getProductionTimeDisplayAddOnCents(cart, item) {
+    var linkedProduct = findProductionTimeProductForItem(cart, item);
+    var quantity = Number(item && item.quantity || 0) || 1;
+
+    if (linkedProduct) {
+      return (Number(linkedProduct.final_price != null ? linkedProduct.final_price : linkedProduct.price) || 0) * quantity;
+    }
+
+    return getProductionTimeAddOnCents(getProductionTimeValue(item)) * quantity;
+  }
+
+  function getMissingProductionTimeAddOnTotal(cart) {
+    return getCartVisibleItems(cart).reduce(function(total, item) {
+      if (!getProductionTimeAddOnCents(getProductionTimeValue(item))) return total;
+      if (findProductionTimeProductForItem(cart, item)) return total;
+      return total + getProductionTimeDisplayAddOnCents(cart, item);
+    }, 0);
+  }
+
+  function getCartDisplayTotal(cart) {
+    return (Number(cart && cart.total_price || 0) || 0) + getMissingProductionTimeAddOnTotal(cart);
+  }
+
   function readCachedPreviewByToken(productId, token) {
     if (!token) return '';
 
@@ -393,7 +473,7 @@
       });
   }
 
-  function getLinePriceDisplay(item) {
+  function getLinePriceDisplay(item, cart) {
     var quantity = Number(item.quantity || 0);
     var unitPriceCents = Number(item.final_price != null ? item.final_price : item.price) || 0;
     var compareUnitCents =
@@ -402,8 +482,14 @@
       Number(item.final_line_price != null ? item.final_line_price : unitPriceCents * quantity) || 0;
     var originalLineCents =
       Number(item.original_line_price != null ? item.original_line_price : lineTotalCents) || 0;
+    var addOnLineCents = getProductionTimeDisplayAddOnCents(cart, item);
     var hasUnitDiscount = compareUnitCents > unitPriceCents;
     var linePriceDisplay;
+
+    lineTotalCents += addOnLineCents;
+    originalLineCents += addOnLineCents;
+    unitPriceCents += quantity > 0 ? Math.round(addOnLineCents / quantity) : 0;
+    compareUnitCents += quantity > 0 ? Math.round(addOnLineCents / quantity) : 0;
 
     if (quantity > 1) {
       linePriceDisplay =
@@ -432,26 +518,27 @@
   function updateCartSummary(cart) {
     var els = getEls();
     if (!cart) return;
+    var visibleItemCount = getVisibleItemCount(cart);
 
-    updateHeaderBubble(cart.item_count || 0);
+    updateHeaderBubble(visibleItemCount);
 
     if (els.count) {
-      els.count.textContent = '(' + cart.item_count + ')';
+      els.count.textContent = '(' + visibleItemCount + ')';
     }
 
     if (els.itemLabel) {
-      els.itemLabel.textContent = cart.item_count + (cart.item_count === 1 ? ' Item' : ' Items');
+      els.itemLabel.textContent = visibleItemCount + (visibleItemCount === 1 ? ' Item' : ' Items');
     }
 
     if (els.subtotal) {
-      els.subtotal.textContent = money(Number(cart.total_price || 0));
+      els.subtotal.textContent = money(getCartDisplayTotal(cart));
     }
 
     var discountRow = els.footer && els.footer.querySelector('.custom-cart-summary-discount');
     var itemsSubtotal = Number(
       cart.items_subtotal_price != null ? cart.items_subtotal_price : cart.total_price || 0
     );
-    var totalPrice = Number(cart.total_price || 0);
+    var totalPrice = getCartDisplayTotal(cart);
     var discountTotal = Number(
       cart.total_discount != null ? cart.total_discount : Math.max(0, itemsSubtotal - totalPrice)
     );
@@ -488,9 +575,11 @@
       var row = document.querySelector('.custom-cart-item[data-cart-key="' + cssEscapeValue(key) + '"]');
       if (!row) return;
 
+      if (isProductionTimeProduct(item)) return;
+
       var priceEl = row.querySelector('.custom-cart-item-price');
       if (priceEl) {
-        priceEl.innerHTML = getLinePriceDisplay(item);
+        priceEl.innerHTML = getLinePriceDisplay(item, cart);
       }
 
       var qtyValue = row.querySelector('.custom-cart-qty-value');
@@ -552,22 +641,25 @@
     if (!els.body) return;
 
     cart = cart || { item_count: 0, items: [], total_price: 0 };
-    updateHeaderBubble(cart.item_count || 0);
+    var visibleItems = getCartVisibleItems(cart);
+    var visibleItemCount = getVisibleItemCount(cart);
 
-    if (!cart.items || !cart.items.length) {
+    updateHeaderBubble(visibleItemCount);
+
+    if (!visibleItems.length) {
       renderEmpty(cart);
       return;
     }
 
     els.body.classList.remove('is-empty');
-    if (els.count) els.count.textContent = '(' + cart.item_count + ')';
+    if (els.count) els.count.textContent = '(' + visibleItemCount + ')';
     if (els.footer) els.footer.style.display = 'block';
-    if (els.itemLabel) els.itemLabel.textContent = cart.item_count + (cart.item_count === 1 ? ' Item' : ' Items');
+    if (els.itemLabel) els.itemLabel.textContent = visibleItemCount + (visibleItemCount === 1 ? ' Item' : ' Items');
 
-    els.body.innerHTML = cart.items.map(function (item) {
+    els.body.innerHTML = visibleItems.map(function (item) {
       var image = getItemImage(item);
       var quantity = Number(item.quantity || 0);
-      var linePriceDisplay = getLinePriceDisplay(item);
+      var linePriceDisplay = getLinePriceDisplay(item, cart);
       var variantText = getVariantText(item);
       var key = escapeHtml(item.key || '');
 
@@ -603,12 +695,12 @@
 
     if (els.footer) {
       var itemsSubtotal = Number(cart.items_subtotal_price != null ? cart.items_subtotal_price : cart.total_price || 0);
-      var totalPrice = Number(cart.total_price || 0);
+      var totalPrice = getCartDisplayTotal(cart);
       var discountTotal = Number(cart.total_discount != null ? cart.total_discount : Math.max(0, itemsSubtotal - totalPrice));
       els.footer.innerHTML = '' +
         '<div class="custom-cart-subtotal-row">' +
           '<div class="custom-cart-subtotal-row-inner">' +
-            '<strong>Subtotal (<span id="customCartItemLabel">' + cart.item_count + (cart.item_count === 1 ? ' Item' : ' Items') + '</span>)</strong>' +
+            '<strong>Subtotal (<span id="customCartItemLabel">' + visibleItemCount + (visibleItemCount === 1 ? ' Item' : ' Items') + '</span>)</strong>' +
             '<strong id="customCartSubtotal">' + money(totalPrice) + '</strong>' +
           '</div>' +
           (discountTotal > 0 ? '<div class="custom-cart-summary-discount"><span>Discounts</span><span>-' + money(discountTotal) + '</span></div>' : '') +
@@ -621,6 +713,7 @@
 
   function loadCart(callback) {
     return fetchCartJson()
+      .then(cleanProductionTimeProducts)
       .then(function (cart) {
         renderCart(cart);
         return resolveCartAfterDiameterNormalize(cart).then(function (finalCart) {
@@ -758,6 +851,9 @@
         });
       })
       .then(function (cart) {
+        return cleanProductionTimeProducts(cart);
+      })
+      .then(function (cart) {
         updateCartSummary(cart);
         updateCartLinePricing(cart);
         renderCart(cart);
@@ -768,6 +864,143 @@
       })
       .finally(function () {
         endCartQuantityUpdate(key);
+      });
+  }
+
+  function changeCartLineByKey(key, quantity) {
+    return fetch('/cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({ id: key, quantity: Math.max(0, Number(quantity || 0)) })
+    }).then(function (res) {
+      return res.json().then(function (cart) {
+        if (!res.ok) throw cart;
+        return cart;
+      });
+    });
+  }
+
+  function cleanProductionTimeProducts(cart) {
+    var productionItems = ((cart && cart.items) || []).filter(isProductionTimeProduct);
+
+    if (!productionItems.length) return Promise.resolve(cart);
+
+    return productionItems.reduce(function (chain, productionItem) {
+      return chain.then(function (currentCart) {
+        var sourceItem = findSourceItemForProductionTimeProduct(currentCart, productionItem);
+        var productionKey = String(productionItem.key || '');
+
+        if (!productionKey) return currentCart;
+
+        if (!sourceItem) {
+          return changeCartLineByKey(productionKey, 0);
+        }
+
+        if (Number(productionItem.quantity || 0) !== Number(sourceItem.quantity || 0)) {
+          return changeCartLineByKey(productionKey, Number(sourceItem.quantity || 0));
+        }
+
+        return currentCart;
+      });
+    }, Promise.resolve(cart));
+  }
+
+  function getProductionTimeProductHandle(productionTime) {
+    productionTime = String(productionTime || '').trim().toLowerCase();
+    if (productionTime === 'rush production') return 'rush-production';
+    if (productionTime === 'priority rush') return 'priority-rush';
+    return '';
+  }
+
+  function fetchProductCartIdByHandle(handle) {
+    handle = String(handle || '').trim();
+    if (!handle) return Promise.resolve(null);
+
+    return fetch('/products/' + encodeURIComponent(handle) + '.js', {
+      headers: {
+        Accept: 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
+      .then(function (res) {
+        if (!res.ok) return null;
+        return res.json();
+      })
+      .then(function (product) {
+        var variants = product && Array.isArray(product.variants) ? product.variants : [];
+        var variant = variants.find(function (item) {
+          return item && item.available !== false;
+        }) || variants[0];
+        return variant && variant.id ? Number(variant.id) : null;
+      })
+      .catch(function () {
+        return null;
+      });
+  }
+
+  function buildMissingProductionTimeAdds(cart) {
+    return getCartVisibleItems(cart).filter(function (item) {
+      return getProductionTimeAddOnCents(getProductionTimeValue(item)) > 0 && !findProductionTimeProductForItem(cart, item);
+    });
+  }
+
+  function addMissingProductionTimeProducts(cart) {
+    var missingItems = buildMissingProductionTimeAdds(cart);
+    if (!missingItems.length) return Promise.resolve(cart);
+
+    return Promise.all(missingItems.map(function (item) {
+      var productionTime = getProductionTimeValue(item);
+      var handle = getProductionTimeProductHandle(productionTime);
+
+      return fetchProductCartIdByHandle(handle).then(function (cartId) {
+        if (!cartId) {
+          throw new Error('Could not find the ' + productionTime + ' product.');
+        }
+
+        return {
+          id: cartId,
+          quantity: Math.max(1, Number(item.quantity || 0) || 1),
+          properties: {
+            'Production Time': productionTime,
+            '_Production Time Product': 'true',
+            '_Production Time Source Key': String(item.key || ''),
+            '_Production Time Source Product': String(item.product_title || item.title || '')
+          }
+        };
+      });
+    })).then(function (items) {
+      return fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({ items: items })
+      });
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        if (!res.ok) throw data;
+        return fetchCartJson();
+      });
+    });
+  }
+
+  function ensureProductionTimeProductsBeforeCheckout() {
+    setCartDrawerUpdating(true);
+
+    return fetchCartJson()
+      .then(cleanProductionTimeProducts)
+      .then(addMissingProductionTimeProducts)
+      .then(function (cart) {
+        renderCart(cart);
+        return cart;
+      })
+      .finally(function () {
+        setCartDrawerUpdating(false);
       });
   }
 
@@ -876,6 +1109,23 @@
       event.preventDefault();
       event.stopImmediatePropagation();
       updateCartByKey(removeBtn.getAttribute('data-key'), 0);
+    }, true);
+
+    document.addEventListener('click', function (event) {
+      var checkout = event.target.closest && event.target.closest('.custom-cart-checkout[href="/checkout"], a[href="/checkout"]');
+      if (!checkout) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      ensureProductionTimeProductsBeforeCheckout()
+        .then(function () {
+          window.location.href = checkout.getAttribute('href') || '/checkout';
+        })
+        .catch(function (error) {
+          console.error('[StretchableCartDrawer] Production time checkout error:', error);
+          alert((error && (error.description || error.message)) || 'Could not add the selected production time to checkout. Please try again.');
+        });
     }, true);
 
     document.addEventListener('click', function (event) {
