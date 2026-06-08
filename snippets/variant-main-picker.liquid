@@ -609,6 +609,18 @@
               line-height: 0 !important;
             }
 
+            .variant-picker .variant-production-time__main-icon--standard {
+              color: #5d6f8f !important;
+            }
+
+            .variant-picker .variant-production-time__main-icon--rush {
+              color: #f97316 !important;
+            }
+
+            .variant-picker .variant-production-time__main-icon--priority {
+              color: #8b5cf6 !important;
+            }
+
             .variant-picker .variant-production-time__main-icon svg {
               display: block !important;
               width: 44px !important;
@@ -664,6 +676,55 @@
               color: #8b5cf6 !important;
             }
 
+            .variant-picker .variant-production-time__notice {
+              display: flex !important;
+              align-items: center !important;
+              gap: 10px !important;
+              width: 100% !important;
+              margin: 12px 0 0 !important;
+              padding: 11px 13px !important;
+              border-radius: 6px !important;
+              background: #f2f4ff !important;
+              color: #334155 !important;
+              box-sizing: border-box !important;
+              text-align: left !important;
+            }
+
+            .variant-picker .variant-production-time__notice-icon {
+              display: inline-flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              flex: 0 0 44px !important;
+              width: 44px !important;
+              height: 44px !important;
+              color: #0f2e53 !important;
+              line-height: 0 !important;
+            }
+
+            .variant-picker .variant-production-time__notice-icon svg {
+              display: block !important;
+              width: 44px !important;
+              height: 44px !important;
+            }
+
+            .variant-picker .variant-production-time__notice p {
+              margin: 0 !important;
+              font-family: var(--font-paragraph--family, var(--font-body--family)) !important;
+              font-style: var(--font-paragraph--style) !important;
+              font-weight: var(--font-paragraph--weight) !important;
+              font-size: var(--font-paragraph--size) !important;
+              line-height: var(--font-paragraph--line-height) !important;
+              text-transform: var(--font-paragraph--case) !important;
+            }
+
+            .variant-picker .variant-production-time__notice strong {
+              font-family: inherit !important;
+              font-size: inherit !important;
+              line-height: inherit !important;
+              color: #1f2937 !important;
+              font-weight: 800 !important;
+            }
+
             @media screen and (max-width: 989px) {
               .variant-picker .variant-production-time__grid {
                 grid-template-columns: 1fr !important;
@@ -707,10 +768,11 @@
                     </svg>
                   </span>
 
-                  <span class="variant-production-time__main-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-                      <path d="M22 4.5L35 12V27L22 34.5L9 27V12L22 4.5Z" stroke="#5D6F8F" stroke-width="2.4" stroke-linejoin="round"/>
-                      <path d="M22 4.5V19.5M22 19.5L35 12M22 19.5L9 12M22 19.5V34.5" stroke="#5D6F8F" stroke-width="2.4" stroke-linejoin="round"/>
+                  <span class="variant-production-time__main-icon variant-production-time__main-icon--standard">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 3L5 6.5L12 10L19 6.5L12 3Z"/>
+                      <path d="M5 6.5V14L12 18L19 14V6.5"/>
+                      <path d="M12 10V18"/>
                     </svg>
                   </span>
 
@@ -737,9 +799,9 @@
                     </svg>
                   </span>
 
-                  <span class="variant-production-time__main-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-                      <path d="M24 4.5L12 24H21L18.8 39.5L31 20H22L24 4.5Z" stroke="#F97316" stroke-width="2.7" stroke-linejoin="round"/>
+                  <span class="variant-production-time__main-icon variant-production-time__main-icon--rush">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M13 2L6 12H11L10 22L18 10H13V2Z"/>
                     </svg>
                   </span>
 
@@ -766,11 +828,15 @@
                     </svg>
                   </span>
 
-                  <span class="variant-production-time__main-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-                      <path d="M12 29L8 40L19 36L34 21C36.2 18.8 36.2 15.2 34 13C31.8 10.8 28.2 10.8 26 13L12 27V29Z" stroke="#8B5CF6" stroke-width="2.5" stroke-linejoin="round"/>
-                      <path d="M26 13L34 21" stroke="#8B5CF6" stroke-width="2.5"/>
-                      <path d="M21 35L13 27" stroke="#8B5CF6" stroke-width="2.5"/>
+                  <span class="variant-production-time__main-icon variant-production-time__main-icon--priority">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 512 512">
+                      <g fill="none" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M166 244C180 159 267 51 361 24C406 11 454 13 499 13C498 58 494 106 482 151C455 250 370 325 268 346C229 331 184 285 166 244Z"/>
+                        <circle cx="346" cy="166" r="51"/>
+                        <path d="M164 244C121 247 76 269 38 294C74 228 122 159 207 140"/>
+                        <path d="M268 346C264 394 247 437 218 474C286 438 351 388 371 303"/>
+                        <path d="M167 393C151 437 93 471 13 499C41 419 73 359 113 347C141 338 176 364 167 393Z"/>
+                      </g>
                     </svg>
                   </span>
 
@@ -780,6 +846,20 @@
                   <span class="variant-production-time__price variant-production-time__price--priority">+$55</span>
                 </span>
               </label>
+            </div>
+
+            <div class="variant-production-time__notice">
+              <span class="variant-production-time__notice-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 11V16"/>
+                  <path d="M12 8H12.01"/>
+                </svg>
+              </span>
+              <p>
+                <strong>Rush production speeds up manufacturing only.</strong><br>
+                Shipping transit time is separate. Choose expedited shipping at checkout if needed.
+              </p>
             </div>
           </div>
 
