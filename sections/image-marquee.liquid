@@ -1,94 +1,144 @@
-<div class="image-marquee">
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            {% for i in (1..2) %}
-                {% for block in section.blocks %}
-                    <div class="swiper-slide">
-                        <div class="swiper-slide__image">
-                            <img src="{{ block.settings.image | image_url}}" width="512" height="512">
-                        </div>
-                    </div>
-                {% endfor %}
-            {%endfor %}
-        </div>
+{% liquid
+  assign marquee_metafield = product.metafields.custom.product_image_marquee
+  assign marquee_metaobjects = marquee_metafield.value
+  assign fallback_slide_count = 8
+%}
+
+<div class="image-marquee image-marquee--{{ section.id }}" data-image-marquee>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% capture marquee_slides %}
+        {% for i in (1..8) %}
+          {% if marquee_metafield != blank %}
+            {% for marquee_item in marquee_metaobjects %}
+              {% liquid
+                assign marquee_image = marquee_item.image.value
+                if marquee_image == blank
+                  assign marquee_image = marquee_item.image
+                endif
+              %}
+
+              {% if marquee_image != blank %}
+                <div class="swiper-slide">
+                  <div class="swiper-slide__image">
+                    {{ marquee_image | image_url: width: 1024 | image_tag: class: 'image-marquee__image', loading: 'lazy', widths: '256, 512, 768, 1024', alt: product.title }}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endcapture %}
+
+      {% assign rendered_marquee_slides = marquee_slides | strip %}
+      {% if rendered_marquee_slides != blank %}
+        {{ rendered_marquee_slides }}
+      {% else %}
+        {% for i in (1..fallback_slide_count) %}
+          <div class="swiper-slide">
+            <div class="swiper-slide__image image-marquee__blank-image" role="img" aria-label="Blank image fallback"></div>
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
+  </div>
 </div>
 
 {% style %}
-.image-marquee img {
+  .image-marquee--{{ section.id }} img,
+  .image-marquee--{{ section.id }} .image-marquee__blank-image {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: auto;
-}
-.image-marquee .swiper-slide .swiper-slide__image {
+  }
+
+  .image-marquee--{{ section.id }} img {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .image-marquee--{{ section.id }} .image-marquee__blank-image {
+    background: #fff;
+  }
+
+  .image-marquee--{{ section.id }} .swiper-slide .swiper-slide__image {
     overflow: hidden;
     border-radius: 23px;
     padding: 10px;
-    box-shadow: 0px 2px 3px 0px #0000004D;
-    box-shadow: 0px 6px 10px 4px #00000026;
+    box-shadow: 0 2px 3px 0 #0000004d, 0 6px 10px 4px #00000026;
     margin: 20px 0;
-}
-.image-marquee {
+    height: 290px;
+  }
+
+  .image-marquee--{{ section.id }} {
     margin: 2rem auto;
     position: relative;
     overflow: hidden;
     -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        black 10%,
-        black 90%,
-        transparent 100%
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
     );
     mask-image: linear-gradient(
-            to right,
-            transparent 0%,
-            black 10%,
-            black 90%,
-            transparent 100%
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
     );
-}
-.image-marquee .swiper-wrapper {
-  transition-timing-function: linear;
-}
-{% endstyle %}
+  }
 
-{% javascript %}
-  const swiper = new Swiper('.image-marquee .swiper', {
-    slidesPerView: 2,
-    spaceBetween: 20,
-    loop: true,
-    speed: 6000,
-    allowTouchMove: false,
-    autoplay: {
-      delay: 1,
-      disableOnInteraction: false
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 6,
-        spaceBetween: 40
-      }
+  .image-marquee--{{ section.id }} .swiper {
+    overflow: hidden;
+  }
+
+  .image-marquee--{{ section.id }} .swiper-wrapper {
+    display: flex;
+    gap: 20px;
+    transition-timing-function: linear;
+    width: max-content;
+    animation: image-marquee-scroll-{{ section.id }} 80s linear infinite;
+    will-change: transform;
+  }
+
+  .image-marquee--{{ section.id }} .swiper-slide {
+    flex: 0 0 calc((100vw - 20px) / 2);
+    max-width: 320px;
+  }
+
+  @media screen and (min-width: 640px) {
+    .image-marquee--{{ section.id }} .swiper-wrapper {
+      gap: 40px;
     }
-  });
-{% endjavascript %}
+
+    .image-marquee--{{ section.id }} .swiper-slide {
+      flex-basis: calc((100vw - 200px) / 6);
+      max-width: 300px;
+    }
+
+    .image-marquee--{{ section.id }} .swiper-slide .swiper-slide__image {
+      height: 280px;
+    }
+  }
+
+  @keyframes image-marquee-scroll-{{ section.id }} {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+{% endstyle %}
 
 {% schema %}
 {
   "name": "Image marquee",
   "settings": [],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
       "name": "Image marquee"
