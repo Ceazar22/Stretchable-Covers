@@ -2726,22 +2726,28 @@
       {%- if rush_production_product == blank -%}
         {%- assign rush_production_product = all_products['rush-production'] -%}
       {%- endif -%}
+      {%- if rush_production_product == blank -%}
+        {%- assign rush_production_product = all_products['rush-production-upgrade'] -%}
+      {%- endif -%}
       {%- assign rush_production_cart_item = rush_production_product.selected_or_first_available_variant -%}
       "cartId": {% if rush_production_cart_item != blank %}{{ rush_production_cart_item.id | json }}{% else %}null{% endif %},
       "productId": {% if rush_production_product != blank %}{{ rush_production_product.id | json }}{% else %}null{% endif %},
       "title": {% if rush_production_product != blank %}{{ rush_production_product.title | json }}{% else %}"Rush Production"{% endif %},
-      "handles": ["rush-production"]
+      "handles": ["rush-production", "rush-production-upgrade"]
     },
     "Priority Rush": {
       {%- assign priority_rush_product = section.settings.priority_rush_product -%}
       {%- if priority_rush_product == blank -%}
         {%- assign priority_rush_product = all_products['priority-rush'] -%}
       {%- endif -%}
+      {%- if priority_rush_product == blank -%}
+        {%- assign priority_rush_product = all_products['priority-rush-upgrade'] -%}
+      {%- endif -%}
       {%- assign priority_rush_cart_item = priority_rush_product.selected_or_first_available_variant -%}
       "cartId": {% if priority_rush_cart_item != blank %}{{ priority_rush_cart_item.id | json }}{% else %}null{% endif %},
       "productId": {% if priority_rush_product != blank %}{{ priority_rush_product.id | json }}{% else %}null{% endif %},
       "title": {% if priority_rush_product != blank %}{{ priority_rush_product.title | json }}{% else %}"Priority Rush"{% endif %},
-      "handles": ["priority-rush"]
+      "handles": ["priority-rush", "priority-rush-upgrade"]
     }
   }
 </script>
@@ -2974,6 +2980,7 @@
         key === 'imprint type' ||
         key === 'cover imprint' ||
         key === 'print size' ||
+        key === 'production time' ||
         key === 'design image' ||
         key === 'design file format'
       );
@@ -4600,26 +4607,6 @@
       return input ? cleanCartValue(input.value) : '';
     }
 
-    function getSelectedProductionTimeProduct(form) {
-      var productionTime = getSelectedProductionTime(form);
-      var product = productionTime ? productionTimeProducts[productionTime] : null;
-
-      if (!productionTime || productionTime === 'Standard Production') return null;
-      if (!product) {
-        product = {
-          title: productionTime,
-          handles: productionTime === 'Priority Rush' ? ['priority-rush'] : ['rush-production']
-        };
-      }
-
-      return {
-        cartId: product.cartId,
-        handles: Array.isArray(product.handles) ? product.handles : [],
-        title: product.title || productionTime,
-        productionTime: productionTime
-      };
-    }
-  
     function restoreDiameterInput(input, value) {
       if (!input || !value || value === '0') return;
   
@@ -4890,10 +4877,147 @@
       });
     }
 
-    function addProductionTimeProduct(productionTimeProduct, quantity, sourceItem) {
-      if (!productionTimeProduct) return Promise.resolve();
+    function normalizeProductionTime(productionTime) {
+      productionTime = String(productionTime || '').trim().toLowerCase();
+      if (productionTime === 'priority rush') return 'Priority Rush';
+      if (productionTime === 'rush production') return 'Rush Production';
+      return '';
+    }
 
-      quantity = Math.max(1, parseInt(quantity, 10) || 1);
+    function isProductionTimeProduct(item) {
+      var props = item && item.properties ? item.properties : {};
+      var marker = String(props['_Production Time Product'] || '').trim().toLowerCase();
+      var title = String((item && (item.product_title || item.title)) || '').trim().toLowerCase();
+
+      return marker === 'true' || title === 'rush production' || title === 'priority rush';
+    }
+
+    function getProductionTimeValue(item) {
+      var props = item && item.properties ? item.properties : {};
+      return normalizeProductionTime(props['Production Time'] || props['production time'] || '');
+    }
+
+    function getProductionTimeProductValue(item) {
+      var props = item && item.properties ? item.properties : {};
+      return normalizeProductionTime(
+        props['Production Time'] ||
+          props['production time'] ||
+          item && (item.product_title || item.title)
+      );
+    }
+
+    function getCartVisibleItems(cart) {
+      return ((cart && cart.items) || []).filter(function(item) {
+        return !isProductionTimeProduct(item);
+      });
+    }
+
+    function getCartDesiredProductionTime(cart) {
+      var desired = '';
+
+      getCartVisibleItems(cart).forEach(function(item) {
+        var productionTime = getProductionTimeValue(item);
+
+        if (productionTime === 'Priority Rush') {
+          desired = 'Priority Rush';
+        } else if (productionTime === 'Rush Production' && desired !== 'Priority Rush') {
+          desired = 'Rush Production';
+        }
+      });
+
+      return desired;
+    }
+
+    function fetchCartJson() {
+      return fetch('/cart.js', {
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      }).then(function(res) {
+        return res.json().then(function(cart) {
+          if (!res.ok) throw cart;
+          return cart;
+        });
+      });
+    }
+
+    function changeCartLineByKey(key, quantity) {
+      return fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({ id: key, quantity: Math.max(0, Number(quantity || 0)) })
+      }).then(function(res) {
+        return res.json().then(function(cart) {
+          if (!res.ok) throw cart;
+          return cart;
+        });
+      });
+    }
+
+    function getProductionTimeProductConfig(productionTime) {
+      var config = productionTimeProducts[productionTime];
+
+      if (config) {
+        return {
+          cartId: config.cartId,
+          handles: Array.isArray(config.handles) ? config.handles : [],
+          title: config.title || productionTime,
+          productionTime: productionTime
+        };
+      }
+
+      return {
+        handles: productionTime === 'Priority Rush' ? ['priority-rush'] : ['rush-production'],
+        title: productionTime,
+        productionTime: productionTime
+      };
+    }
+
+    function cleanProductionTimeProducts(cart) {
+      var productionItems = ((cart && cart.items) || []).filter(isProductionTimeProduct);
+      var desiredProductionTime = getCartDesiredProductionTime(cart);
+      var keptProductionTimeKey = '';
+
+      if (!productionItems.length) return Promise.resolve(cart);
+
+      return productionItems.reduce(function(chain, productionItem) {
+        return chain.then(function(currentCart) {
+          var productionKey = String(productionItem.key || '');
+          var productionTime = getProductionTimeProductValue(productionItem);
+
+          if (!productionKey) return currentCart;
+
+          if (!desiredProductionTime || productionTime !== desiredProductionTime || keptProductionTimeKey) {
+            return changeCartLineByKey(productionKey, 0);
+          }
+
+          keptProductionTimeKey = productionKey;
+
+          if (Number(productionItem.quantity || 0) !== 1) {
+            return changeCartLineByKey(productionKey, 1);
+          }
+
+          return currentCart;
+        });
+      }, Promise.resolve(cart));
+    }
+
+    function findProductionTimeProductForType(cart, productionTime) {
+      productionTime = normalizeProductionTime(productionTime);
+      if (!productionTime) return null;
+
+      return ((cart && cart.items) || []).find(function(item) {
+        return isProductionTimeProduct(item) && getProductionTimeProductValue(item) === productionTime;
+      }) || null;
+    }
+
+    function addProductionTimeProduct(productionTimeProduct) {
+      if (!productionTimeProduct) return Promise.resolve();
 
       return resolveProductionTimeCartId(productionTimeProduct).then(function(cartId) {
         if (!cartId) {
@@ -4911,12 +5035,10 @@
             items: [
               {
                 id: Number(cartId),
-                quantity: quantity,
+                quantity: 1,
                 properties: {
                   'Production Time': productionTimeProduct.productionTime,
-                  '_Production Time Product': 'true',
-                  '_Production Time Source Key': String((sourceItem && sourceItem.key) || ''),
-                  '_Production Time Source Product': String((sourceItem && sourceItem.product_title) || '')
+                  '_Production Time Product': 'true'
                 }
               }
             ]
@@ -4928,6 +5050,28 @@
           });
         });
       });
+    }
+
+    function ensureOrderProductionTimeProduct() {
+      return fetchCartJson()
+        .then(cleanProductionTimeProducts)
+        .then(function(cart) {
+          var desiredProductionTime = getCartDesiredProductionTime(cart);
+
+          if (!desiredProductionTime || findProductionTimeProductForType(cart, desiredProductionTime)) {
+            return cart;
+          }
+
+          return addProductionTimeProduct(getProductionTimeProductConfig(desiredProductionTime))
+            .then(fetchCartJson)
+            .then(cleanProductionTimeProducts);
+        })
+        .catch(function(error) {
+          console.error('Production time fee sync error:', error);
+          return fetchCartJson().catch(function() {
+            return null;
+          });
+        });
     }
   
     function submitAddToCartForm(form, submitter) {
@@ -4977,8 +5121,7 @@
       var formData = new FormData(form);
       var variantId = forceLatestVariantId(form, formData);
       var button = findAddToCartButton(form, submitter);
-      var productionTimeProduct = getSelectedProductionTimeProduct(form);
-  
+
       if (!variantId || String(variantId).trim() === '') {
         console.error('Add to cart error: missing selected variant id. Make sure the product form has an input/select named "id" that updates when variants change.');
         alert('Please select an available option before adding this item to your cart.');
@@ -5014,8 +5157,8 @@
             return data;
           });
         })
-        .then(function(addedItem) {
-          return addProductionTimeProduct(productionTimeProduct, formData.get('quantity'), addedItem);
+        .then(function() {
+          return ensureOrderProductionTimeProduct();
         })
         .then(function() {
           if (!customizer) {

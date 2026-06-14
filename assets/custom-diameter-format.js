@@ -270,6 +270,7 @@
           'a[href="/checkout"], a[href*="/checkout?"], .custom-cart-checkout',
         );
         if (!target) return;
+        if (target.classList && target.classList.contains('custom-cart-checkout')) return;
         if (target.disabled) return;
 
         event.preventDefault();
