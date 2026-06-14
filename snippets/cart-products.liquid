@@ -235,7 +235,7 @@
                           assign property_name_lower = property.first | downcase
 
                           if property.last != blank and property_first_char != '_'
-                            unless property_name_lower == 'imprint size' or property_name_lower == 'imprint' or property_name_lower == 'imprint type' or property_name_lower == 'cover imprint' or property_name_lower == 'diameter' or property_name_lower == 'product diameter' or property_name_lower == 'product variant diameter' or property_name_lower == 'design image' or property_name_lower == 'design file format'
+                            unless property_name_lower == 'imprint size' or property_name_lower == 'imprint' or property_name_lower == 'imprint type' or property_name_lower == 'cover imprint' or property_name_lower == 'production time' or property_name_lower == 'diameter' or property_name_lower == 'product diameter' or property_name_lower == 'product variant diameter' or property_name_lower == 'design image' or property_name_lower == 'design file format'
                               assign show_cart_property = true
                             endunless
                           endif
