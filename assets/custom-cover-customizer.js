@@ -4631,7 +4631,7 @@ class CustomCoverCustomizer extends HTMLElement {
 
   getSafeAreaWarningMessage() {
     const message = String(this.dataset.safeWarning || "").trim();
-    return message || "Can't print up to the end of the edge";
+    return message || "Important: We cannot print all the way to the elastic. Click here to see an example.";
   }
 
   getElementWorldBounds(element) {

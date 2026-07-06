@@ -7,7 +7,7 @@
 {% endif %}
 
 {% capture product_text_content %}
-  {% render 'text', block: block %}
+  {% render 'text', block: block, class: block.settings.class %}
 {% endcapture %}
 
 {% if sold_count_metafield != blank and product_text_content contains '</h1>' %}
@@ -18,7 +18,7 @@
 {% endif %}
 
 {% if block.settings.logo_image != blank %}
-  <div class="custom-text-logo-row">
+  <div class="custom-text-logo-row {% if section.settings.class != blank %} {{ section.settings.class }} {% endif %}">
     <div class="custom-text-logo-row__text">
       {{ product_text_content }}
     </div>
@@ -95,6 +95,11 @@
   "name": "t:names.text",
   "tag": null,
   "settings": [
+    {
+      "type": "text",
+      "id": "class",
+      "label": "Class"
+    },
     {
       "type": "richtext",
       "id": "text",

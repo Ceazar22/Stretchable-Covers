@@ -140,41 +140,741 @@
     </div>
 
     <div class="custom-cover-customizer__left-column">
-      {%- assign safe_warning_text = section.settings.safe_area_warning | strip -%}
+   {%- assign safe_warning_text = section.settings.safe_area_warning | strip -%}
       {%- if safe_warning_text == blank -%}
-        {%- assign safe_warning_text = "Can't print up to the end of the edge" -%}
+        {%- assign safe_warning_text = "Important Design Note: The area near the elastic edge remains unprinted. Click here to see an example." -%}
+        {%- assign safe_warning_text2 = "Important Design Note: The area near the elastic edge remains unprinted." -%}
       {%- endif -%}
-      {%- assign safe_banner_text = safe_warning_text -%}
-      <div
-        class="custom-cover-customizer__safe-banner"
-        role="status"
-        aria-live="polite">
-        <span class="custom-cover-customizer__safe-banner-icon" aria-hidden="true">
+          {%- assign safe_banner_text = safe_warning_text -%}
+          {%- assign safe_banner_text2 = safe_warning_text2 -%}
+
+
+
+         {% assign safe_modal_id = 'custom-cover-safe-modal-' | append: section.id %}
+
+<!-- CLICKABLE SAFE BANNER -->
+<button
+  type="button"
+  class="custom-cover-customizer__safe-banner"
+  data-safe-modal-open="{{ safe_modal_id }}"
+  aria-haspopup="dialog"
+  aria-controls="{{ safe_modal_id }}"
+>
+  <span
+    class="custom-cover-customizer__safe-banner-icon"
+    aria-hidden="true"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+    >
+      <path
+        d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M9 6V9"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M9 12H9.0075"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </span>
+
+  <span class="custom-cover-customizer__safe-banner-text">
+    {{ safe_banner_text | escape }}
+  </span>
+</button>
+
+<!-- SAFE AREA MODAL -->
+<div
+  id="{{ safe_modal_id }}"
+  class="custom-cover-safe-modal"
+  aria-hidden="true"
+  data-safe-modal
+>
+  <div
+    class="custom-cover-safe-modal__overlay"
+    aria-hidden="true"
+    data-safe-modal-close
+  ></div>
+
+  <div
+    class="custom-cover-safe-modal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="{{ safe_modal_id }}-title"
+    aria-describedby="{{ safe_modal_id }}-description"
+    tabindex="-1"
+    data-safe-modal-dialog
+  >
+    <!-- MODAL HEADER -->
+    <div class="custom-cover-safe-modal__header">
+      <div class="custom-cover-safe-modal__heading">
+        <span
+          class="custom-cover-safe-modal__notice-icon"
+          aria-hidden="true"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="18"
             height="18"
             viewBox="0 0 18 18"
-            fill="none">
+            fill="none"
+          >
             <path
               d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z"
-              stroke="#DA0004"
+              stroke="currentColor"
               stroke-linecap="round"
-              stroke-linejoin="round" />
+              stroke-linejoin="round"
+            />
             <path
               d="M9 6V9"
-              stroke="#DA0004"
+              stroke="currentColor"
               stroke-linecap="round"
-              stroke-linejoin="round" />
+              stroke-linejoin="round"
+            />
             <path
               d="M9 12H9.0075"
-              stroke="#DA0004"
+              stroke="currentColor"
               stroke-linecap="round"
-              stroke-linejoin="round" />
+              stroke-linejoin="round"
+            />
           </svg>
         </span>
-        <span>{{ safe_banner_text | escape }}</span>
+
+        <div class="custom-cover-safe-modal__heading-text">
+          <h2
+            id="{{ safe_modal_id }}-title"
+            class="custom-cover-safe-modal__title"
+          >
+            Important Notice
+          </h2>
+
+          <p
+            id="{{ safe_modal_id }}-description"
+            class="custom-cover-safe-modal__description"
+          >
+            {{ safe_banner_text2 | escape }}
+          </p>
+        </div>
       </div>
+
+      <button
+        type="button"
+        class="custom-cover-safe-modal__close"
+        aria-label="Close important notice"
+        data-safe-modal-close
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 22 22"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 5L17 17M17 5L5 17"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- FRONT AND BACK IMAGES -->
+    <div class="custom-cover-safe-modal__images">
+      <div class="custom-cover-safe-modal__image-item">
+        <div class="custom-cover-safe-modal__image-label">
+          <span
+            class="custom-cover-safe-modal__image-label-dot"
+            aria-hidden="true"
+          ></span>
+
+          <span>Front</span>
+        </div>
+
+        <div class="custom-cover-safe-modal__image-wrapper">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0621/6784/2913/files/unnamed.jpg?v=1782537280"
+            alt="Front printing area"
+            class="custom-cover-safe-modal__image"
+            width="1000"
+            height="1000"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <div class="custom-cover-safe-modal__image-item">
+        <div class="custom-cover-safe-modal__image-label">
+          <span
+            class="custom-cover-safe-modal__image-label-dot"
+            aria-hidden="true"
+          ></span>
+
+          <span>Back</span>
+        </div>
+
+        <div class="custom-cover-safe-modal__image-wrapper">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0621/6784/2913/files/unnamed_1.jpg?v=1782537278"
+            alt="Back printing area"
+            class="custom-cover-safe-modal__image"
+            width="1000"
+            height="1000"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-cover-customizer__safe-banner {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 8px;
+    width: auto !important;
+    max-width: 100%;
+    margin: 0 0 12px;
+    padding: 0 !important;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #da0004;
+    font-family: inherit;
+    font-size: var(--font-size--sm);
+    font-weight: inherit;
+    line-height: 1.3;
+    text-align: left;
+    box-shadow: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+  .custom-cover-customizer__safe-banner-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .custom-cover-customizer__safe-banner-text {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .custom-cover-customizer__safe-banner:hover {
+    color: #b80003;
+    background: transparent;
+  }
+
+  
+
+  .custom-cover-customizer__safe-banner:focus-visible {
+    outline: 2px solid #da0004;
+    outline-offset: 3px;
+  }
+
+  .custom-cover-safe-modal {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2147483647 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 24px !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    box-sizing: border-box !important;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
+
+  .custom-cover-safe-modal.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .custom-cover-safe-modal__overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    display: block !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: rgba(15, 15, 15, 0.68) !important;
+    cursor: pointer;
+    box-sizing: border-box !important;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+  }
+
+  .custom-cover-safe-modal__dialog {
+    position: relative !important;
+    z-index: 1 !important;
+    display: block !important;
+    width: min(100%, 720px) !important;
+    max-width: 720px !important;
+    max-height: calc(100dvh - 48px) !important;
+    margin: 0 !important;
+    padding: 26px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    border-radius: 20px !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.3),
+      0 8px 24px rgba(0, 0, 0, 0.14) !important;
+    transform: translateY(14px) scale(0.985);
+    transition: transform 0.2s ease;
+  }
+
+  .custom-cover-safe-modal.is-open
+    .custom-cover-safe-modal__dialog {
+    transform: translateY(0) scale(1);
+  }
+
+  .custom-cover-safe-modal__header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: start !important;
+    gap: 20px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 0 24px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .custom-cover-safe-modal__heading {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .custom-cover-safe-modal__notice-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: 38px !important;
+    height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    background: rgba(218, 0, 4, 0.08) !important;
+    color: #da0004 !important;
+  }
+
+  .custom-cover-safe-modal__heading-text {
+    display: block !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .custom-cover-safe-modal__title {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #171717 !important;
+    font-family: inherit !important;
+    font-size: 22px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+
+  .custom-cover-safe-modal__description {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 6px 0 0 !important;
+    padding: 0 !important;
+    color: #666666 !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    letter-spacing: normal !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .custom-cover-safe-modal__close {
+    position: static !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    color: #202020 !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition:
+      background 0.18s ease,
+      transform 0.18s ease;
+  }
+
+  .custom-cover-safe-modal__close:hover {
+    background: #f2f2f2 !important;
+    transform: rotate(5deg);
+  }
+
+  .custom-cover-safe-modal__close:focus-visible {
+    outline: 2px solid #da0004;
+    outline-offset: 2px;
+  }
+
+  .custom-cover-safe-modal__images {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .custom-cover-safe-modal__image-item {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .custom-cover-safe-modal__image-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 10px !important;
+    padding: 0 4px !important;
+    color: #202020 !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    text-align: left !important;
+  }
+
+  .custom-cover-safe-modal__image-label-dot {
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background: #da0004 !important;
+  }
+
+  .custom-cover-safe-modal__image-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: #f1f1f1 !important;
+    box-sizing: border-box !important;
+  }
+
+  .custom-cover-safe-modal__image {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    object-fit: cover !important;
+  }
+
+  html.custom-cover-safe-modal-open,
+  body.custom-cover-safe-modal-open {
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+  }
+
+  @media screen and (max-width: 749px) {
+    .custom-cover-safe-modal {
+      padding: 16px !important;
+    }
+
+    .custom-cover-safe-modal__dialog {
+      width: 100% !important;
+      max-width: 100% !important;
+      max-height: calc(100dvh - 32px) !important;
+      padding: 20px !important;
+      border-radius: 17px !important;
+    }
+
+    .custom-cover-safe-modal__header {
+      gap: 12px !important;
+      margin-bottom: 20px !important;
+    }
+
+    .custom-cover-safe-modal__heading {
+      gap: 10px !important;
+    }
+
+    .custom-cover-safe-modal__notice-icon {
+      width: 34px !important;
+      height: 34px !important;
+    }
+
+    .custom-cover-safe-modal__title {
+      font-size: 20px !important;
+    }
+
+    .custom-cover-safe-modal__description {
+      margin-top: 4px !important;
+      font-size: 13px !important;
+    }
+
+    .custom-cover-safe-modal__close {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      min-height: 34px !important;
+    }
+
+    .custom-cover-safe-modal__images {
+      gap: 12px !important;
+    }
+
+    .custom-cover-safe-modal__image-label {
+      margin-bottom: 8px !important;
+      font-size: 13px !important;
+    }
+
+    .custom-cover-safe-modal__image-wrapper {
+      border-radius: 10px !important;
+    }
+  }
+
+  @media screen and (max-width: 520px) {
+    .custom-cover-safe-modal__images {
+      grid-template-columns: 1fr !important;
+      gap: 18px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .custom-cover-safe-modal,
+    .custom-cover-safe-modal__dialog,
+    .custom-cover-safe-modal__close {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const modalId = '{{ safe_modal_id }}';
+    const modal = document.getElementById(modalId);
+
+    if (!modal || modal.dataset.initialized === 'true') {
+      return;
+    }
+
+    modal.dataset.initialized = 'true';
+
+    /*
+     * Move the modal directly inside the body.
+     * This stops Shopify section borders, rounded corners,
+     * transforms and overflow hidden from clipping the overlay.
+     */
+    if (modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
+    }
+
+    const dialog = modal.querySelector(
+      '[data-safe-modal-dialog]'
+    );
+
+    const openButtons = document.querySelectorAll(
+      `[data-safe-modal-open="${modalId}"]`
+    );
+
+    const closeButtons = modal.querySelectorAll(
+      '[data-safe-modal-close]'
+    );
+
+    let previouslyFocusedElement = null;
+
+    const getFocusableElements = () => {
+      return Array.from(
+        modal.querySelectorAll(
+          'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+    };
+
+    const openModal = () => {
+      previouslyFocusedElement = document.activeElement;
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+
+      document.documentElement.classList.add(
+        'custom-cover-safe-modal-open'
+      );
+
+      document.body.classList.add(
+        'custom-cover-safe-modal-open'
+      );
+
+      requestAnimationFrame(() => {
+        dialog?.focus();
+      });
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+
+      document.documentElement.classList.remove(
+        'custom-cover-safe-modal-open'
+      );
+
+      document.body.classList.remove(
+        'custom-cover-safe-modal-open'
+      );
+
+      if (
+        previouslyFocusedElement &&
+        typeof previouslyFocusedElement.focus === 'function'
+      ) {
+        previouslyFocusedElement.focus();
+      }
+    };
+
+    openButtons.forEach((button) => {
+      button.addEventListener('click', openModal);
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+        return;
+      }
+
+      if (event.key !== 'Tab') {
+        return;
+      }
+
+      const focusableElements = getFocusableElements();
+
+      if (!focusableElements.length) {
+        event.preventDefault();
+        dialog?.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (
+        event.shiftKey &&
+        document.activeElement === firstElement
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        document.activeElement === lastElement
+      ) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    });
+  })();
+</script>
 
       <div class="custom-cover-customizer__panel">
         <custom-cover-customizer-component
@@ -630,7 +1330,7 @@
                         </button>
                         {%- if image_upload_other_formats_note != blank -%}
                             <span class="custom-cover-customizer__dropzone-note">
-                              {{- image_upload_other_formats_note | escape -}}
+                              {{- image_upload_other_formats_note -}}
                             </span>
                           {%- endif -%}
                       </div>
@@ -2188,10 +2888,10 @@
         "default": "Accepts JPG, PNG, SVG, and WebP",
         "info": "The uploader accepts image types your browser supports (file picker uses image/*)."
       }, {
-        "type": "textarea",
+        "type": "richtext",
         "id": "image_upload_other_formats_note",
         "label": "Image upload other formats note",
-        "default": "Note: If you have other file formats like Corel, PDF, or Adobe Illustrator files, please email them directly to support@stretchablecovers.net (temporary email for now)."
+        
       }, {
         "type": "text",
         "id": "clipart_heading",

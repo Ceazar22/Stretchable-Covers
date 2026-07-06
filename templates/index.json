@@ -67,9 +67,9 @@
             "heading": "Custom-Printed Stretchable Covers That Make Your Brand Impossible to Ignore",
             "subheading": "For fleets, marching bands, dealerships, medical facilities & more",
             "button_label": "Get My Custom Cover",
-            "button_link": "shopify://collections/all-items",
-            "feature_1": "Rush Order Available",
-            "feature_icon_1": "shopify://shop_images/Last_24_Hours.svg",
+            "button_link": "shopify://collections/all-items-1",
+            "feature_1": "Rush Service Available",
+            "feature_icon_1": "shopify://shop_images/stopwatch_transparent_1.svg",
             "feature_2": "Customizable",
             "feature_icon_2": "shopify://shop_images/Paint_Palette.svg",
             "feature_3": "Multi-Purpose Use",
@@ -174,7 +174,7 @@
           "settings": {
             "custom_icon": "shopify://shop_images/Vector_3cc7055f-ee0b-42f3-be31-a5b1368f3d70.svg",
             "heading": "Fully Custom Covers",
-            "text": "Made to your exact size and specifications."
+            "text": "Your artwork. Our expertise. Unlimited possibilities."
           }
         },
         "item_xix4kk": {
@@ -250,7 +250,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Rectangle_438.png",
-            "text": "Instruments Equipments",
+            "text": "Instruments / Equipment",
             "url": "shopify://collections/band-instrument-bell-covers"
           }
         },
@@ -655,6 +655,36 @@
             "mobile_span": "1"
           }
         },
+        "image_item_H9Lqjd": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Main_Steering_Wheel_Cover_graphic_TAN_SAFETY.jpg",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "2",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_QapE6T": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Industrial_Drum_Cover_EDITED.jpg",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "3",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_k8DAUd": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Valve_Control_Cover_IIA.jpg",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "2",
+            "mobile_span": "1"
+          }
+        },
         "image_item_7tNNpq": {
           "type": "image_item",
           "settings": {
@@ -662,36 +692,6 @@
             "alt_text": "",
             "link": "",
             "desktop_span": "1",
-            "mobile_span": "1"
-          }
-        },
-        "image_item_QapE6T": {
-          "type": "image_item",
-          "settings": {
-            "image": "shopify://shop_images/unnamed_5.jpg",
-            "alt_text": "",
-            "link": "",
-            "desktop_span": "1",
-            "mobile_span": "1"
-          }
-        },
-        "image_item_DjbCVn": {
-          "type": "image_item",
-          "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_m7h54vm7h54vm7h5.png",
-            "alt_text": "",
-            "link": "",
-            "desktop_span": "1",
-            "mobile_span": "1"
-          }
-        },
-        "image_item_H9Lqjd": {
-          "type": "image_item",
-          "settings": {
-            "image": "shopify://shop_images/Frame_1000007706.png",
-            "alt_text": "",
-            "link": "",
-            "desktop_span": "3",
             "mobile_span": "1"
           }
         },
@@ -704,15 +704,59 @@
             "desktop_span": "2",
             "mobile_span": "1"
           }
+        },
+        "image_item_DjbCVn": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Fan_Cover_483dc4c4-a256-420b-b7e6-d045e82bb934.jpg",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "2",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_dpMnbe": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Wheel_Chair_Wheel_Cover_D.jpg",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "2",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_wygKHk": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Golf_Cart_Steering_Wheel_Cover_054f03eb-c77a-416e-b24c-1e253dbe89ff.jpg",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "2",
+            "mobile_span": "1"
+          }
+        },
+        "image_item_HNF7MM": {
+          "type": "image_item",
+          "settings": {
+            "image": "shopify://shop_images/Pinball_Machine_bar_stool_covers_MPS.png",
+            "alt_text": "",
+            "link": "",
+            "desktop_span": "3",
+            "mobile_span": "1"
+          }
         }
       },
       "block_order": [
         "image_item_MbcBAd",
-        "image_item_7tNNpq",
-        "image_item_QapE6T",
-        "image_item_DjbCVn",
         "image_item_H9Lqjd",
-        "image_item_m6xRKC"
+        "image_item_QapE6T",
+        "image_item_k8DAUd",
+        "image_item_7tNNpq",
+        "image_item_m6xRKC",
+        "image_item_DjbCVn",
+        "image_item_dpMnbe",
+        "image_item_wygKHk",
+        "image_item_HNF7MM"
       ],
       "name": "Customer Gallery Mosaic",
       "settings": {
@@ -726,8 +770,8 @@
         "heading_color": "#0f2e53",
         "description_color": "#444444",
         "grid_gap": 8,
-        "row_height": 280,
-        "row_height_mobile": 150,
+        "row_height": 320,
+        "row_height_mobile": 240,
         "image_radius": 6,
         "padding_top": 36,
         "padding_bottom": 36
@@ -943,6 +987,58 @@
     "custom_section_marque_QTHnya": {
       "type": "custom-section-marque",
       "blocks": {
+        "logo_6qEENX": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_yJ4QPy": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Washington_Commanders_Logo.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_RkcBB3": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/NAS_logo.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_xHPMN6": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_M79dTU": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/AHA_LOGO-RGB_Red_Black_LG.jpg",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
+        "logo_Mm7PET": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/20221230-195509-47746-side1-ss.png",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
         "logo_inbUiX": {
           "type": "logo",
           "settings": {
@@ -1006,6 +1102,15 @@
             "open_new_tab": false
           }
         },
+        "logo_4LxeW9": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/ete-energy-transfer.jpg",
+            "alt_text": "",
+            "link": "",
+            "open_new_tab": false
+          }
+        },
         "logo_X4fatA": {
           "type": "logo",
           "settings": {
@@ -1026,6 +1131,12 @@
         }
       },
       "block_order": [
+        "logo_6qEENX",
+        "logo_yJ4QPy",
+        "logo_RkcBB3",
+        "logo_xHPMN6",
+        "logo_M79dTU",
+        "logo_Mm7PET",
         "logo_inbUiX",
         "logo_QCcThf",
         "logo_6awVVG",
@@ -1033,6 +1144,7 @@
         "logo_xyCE3F",
         "logo_WUBQPh",
         "logo_qQz3ME",
+        "logo_4LxeW9",
         "logo_X4fatA",
         "logo_LpQYUF"
       ],
