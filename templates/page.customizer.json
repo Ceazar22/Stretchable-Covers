@@ -119,6 +119,7 @@
         "image_rights_label": "Allow stretchablecovers to have rights to this image",
         "image_upload_dropzone_label": "Browse your computer or drag your image here",
         "image_upload_formats_hint": "Accepts JPG, PNG, SVG, and WebP",
+        "image_upload_other_formats_note": "<p>Note: If you would like to send us higher-resolution artwork or vector files such as CorelDRAW (.CDR), Adobe Illustrator (.AI), PDF, EPS, etc., please send them directly to: <a href=\"mailto:art@stretchablecovers.com\" target=\"_blank\" title=\"mailto:art@stretchablecovers.com\"><em>art@stretchablecovers.com</em></a></p>",
         "clipart_heading": "Clipart",
         "clipart_metaobject_type": "clipart_item",
         "clipart_category_handle": "all",
@@ -160,6 +161,7 @@
         "shape_label_triangle": "Triangle",
         "shape_price_adjustment": 0,
         "include_preview_data": false,
+        "design_export_format": "png",
         "padding-block-start": 40,
         "padding-block-end": 64
       }

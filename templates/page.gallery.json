@@ -60,6 +60,48 @@
     "custom_marquee_image_jQw9Fd": {
       "type": "Custom-marquee-image",
       "blocks": {
+        "image_83qhKC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Panther_Band_3_Sousas.png"
+          }
+        },
+        "image_GfNHQF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/yacht_club_boat_console_high_res.png"
+          }
+        },
+        "image_yGYkeN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Wedding_Covers.png"
+          }
+        },
+        "image_aAfckK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/bowl_covers_A.png"
+          }
+        },
+        "image_N9Kbjd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Sea_Ray_A.png"
+          }
+        },
+        "image_eVQWCh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Pinball_Machine_bar_stool_covers_MPS.png"
+          }
+        },
+        "image_WcFMfm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Corvette_Air_Filter_cover.png"
+          }
+        },
         "image_6TJK7V": {
           "type": "image",
           "settings": {
@@ -72,10 +114,28 @@
             "image": "shopify://shop_images/Rectangle_447.jpg"
           }
         },
+        "image_Hy39Gt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ROTHMAN_received_589736071475983.jpg"
+          }
+        },
         "image_dRzQ6G": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/360_FINAL.png"
+          }
+        },
+        "image_GBaFM8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/INTEL_OUTSIDE_SC_monitor_cover.png"
+          }
+        },
+        "image_mxJ6in": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Ghostbusters_Maine.png"
           }
         },
         "image_Hktby4": {
@@ -92,9 +152,19 @@
         }
       },
       "block_order": [
+        "image_83qhKC",
+        "image_GfNHQF",
+        "image_yGYkeN",
+        "image_aAfckK",
+        "image_N9Kbjd",
+        "image_eVQWCh",
+        "image_WcFMfm",
         "image_6TJK7V",
         "image_pJMbhh",
+        "image_Hy39Gt",
         "image_dRzQ6G",
+        "image_GBaFM8",
+        "image_mxJ6in",
         "image_Hktby4",
         "image_3VLcHd"
       ],

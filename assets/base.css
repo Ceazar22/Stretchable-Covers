@@ -1,3 +1,10 @@
+button.button.quick-add__button.quick-add__button--choose.add-to-cart-button {
+    display: none;
+}
+span.custom-cover-customizer__dropzone-note p,
+span.custom-cover-customizer__dropzone-note a {
+    color: #da0004;
+}
 * {
   box-sizing: border-box;
 }
