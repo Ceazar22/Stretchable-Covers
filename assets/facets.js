@@ -9,7 +9,14 @@ import { convertMoneyToMinorUnits, formatMoney } from '@theme/money-formatting';
  */
 const SEARCH_QUERY = 'q';
 const COLLECTION_CATEGORY_FILTER = 'filter.p.m.custom.collections';
-const DYNAMIC_HEADING_COLLECTION = 'all-items-1';
+const NAV_COLLECTION_CATEGORIES = {
+  'all-items-1': '',
+  'steering-wheel-covers': 'Steering Wheel Covers',
+  'boat-steering-wheel-covers': 'Boat / Marine Steering Wheel Covers',
+  'band-instrument-bell-covers': 'Band Instrument Bell Covers',
+  'fleet-safety-message-covers': 'Fleet Safety Message Covers',
+  'shop-safety-message-covers': 'Shop Safety Message Covers',
+};
 
 /**
  * Handles the main facets form functionality
@@ -25,9 +32,16 @@ class FacetsFormComponent extends Component {
 
   connectedCallback() {
     super.connectedCallback();
+    this.syncCollectionState();
+  }
+
+  /**
+   * Reconciles collection headings and category checkboxes with the current URL.
+   */
+  syncCollectionState = () => {
     this.#syncCollectionHeading();
     this.#autoSelectCollectionCategoryWithChildren();
-  }
+  };
 
   /**
    * Creates URL parameters from form data
@@ -97,10 +111,12 @@ class FacetsFormComponent extends Component {
    */
   #syncCollectionHeading(urlParameters = this.createURLParameters(), changedInput = null) {
     const segments = window.location.pathname.split('/').filter(Boolean);
-    if (segments[0] !== 'collections' || segments[1] !== DYNAMIC_HEADING_COLLECTION) return;
+    if (segments[0] !== 'collections' || !segments[1]) return;
 
     const heading = document.querySelector('#MainContent h1, main h1');
     if (!(heading instanceof HTMLElement)) return;
+
+    const breadcrumb = document.querySelector('[data-collection-filter-breadcrumb]');
 
     const categoryTitles = urlParameters.getAll(COLLECTION_CATEGORY_FILTER).filter(Boolean);
     const currentTitle = heading.textContent?.trim() ?? '';
@@ -119,7 +135,8 @@ class FacetsFormComponent extends Component {
       selectedTitle = categoryTitles.at(-1) ?? '';
     }
 
-    const defaultTitle = 'All Items';
+    const defaultTitle =
+      breadcrumb instanceof HTMLElement ? breadcrumb.dataset.defaultTitle || heading.textContent?.trim() || '' : '';
     const title = selectedTitle || defaultTitle;
     heading.textContent = title;
 
@@ -135,27 +152,43 @@ class FacetsFormComponent extends Component {
   #autoSelectCollectionCategoryWithChildren() {
     const url = new URL(window.location.href);
     if (!url.pathname.startsWith('/collections/')) return;
-    const segments = url.pathname.split('/').filter(Boolean);
-    const collectionHandle = segments.length >= 2 ? segments[1] : '';
-    if (collectionHandle !== 'steering-wheel-covers') return;
-
-    let hasFilterParams = false;
-    url.searchParams.forEach((_value, key) => {
-      if (key.startsWith('filter.')) hasFilterParams = true;
-    });
-    if (hasFilterParams) return;
-
-    const collectionTitle = this.#getCollectionTitleFromPath(url.pathname);
-    if (!collectionTitle) return;
 
     const categoryInputs = Array.from(
-      this.refs.facetsForm.querySelectorAll('input[type="checkbox"][name="filter.p.m.custom.collections"]')
+      this.refs.facetsForm.querySelectorAll(`input[type="checkbox"][name="${COLLECTION_CATEGORY_FILTER}"]`)
     );
     if (!categoryInputs.length) return;
 
+    const activeCategoryValues = url.searchParams
+      .getAll(COLLECTION_CATEGORY_FILTER)
+      .map((value) => this.#normalizeFilterText(value));
+
+    if (activeCategoryValues.length) {
+      categoryInputs.forEach((input) => {
+        if (!(input instanceof HTMLInputElement)) return;
+        const inputValue = this.#normalizeFilterText(input.value);
+        const inputLabel = this.#normalizeFilterText(input.labels?.[0]?.textContent || '');
+        input.checked = activeCategoryValues.includes(inputValue) || activeCategoryValues.includes(inputLabel);
+      });
+      return;
+    }
+
+    const collectionHandle = url.pathname.split('/').filter(Boolean)[1] || '';
+    const mappedCategory = NAV_COLLECTION_CATEGORIES[collectionHandle];
+    if (mappedCategory === '') return;
+
+    const collectionBreadcrumb = document.querySelector('[data-collection-filter-breadcrumb]');
+    const collectionTitle =
+      mappedCategory ||
+      (collectionBreadcrumb instanceof HTMLElement ? collectionBreadcrumb.dataset.defaultTitle : '') ||
+      this.#getCollectionTitleFromPath(url.pathname);
+    if (!collectionTitle) return;
+
     const parentInput = categoryInputs.find((input) => {
       if (!(input instanceof HTMLInputElement)) return false;
-      return this.#normalizeFilterText(input.value) === this.#normalizeFilterText(collectionTitle);
+      const normalizedTitle = this.#normalizeFilterText(collectionTitle);
+      const inputValue = this.#normalizeFilterText(input.value);
+      const inputLabel = this.#normalizeFilterText(input.labels?.[0]?.textContent || '');
+      return inputValue === normalizedTitle || inputLabel === normalizedTitle;
     });
     if (!(parentInput instanceof HTMLInputElement)) return;
 
@@ -204,12 +237,19 @@ class FacetsFormComponent extends Component {
    */
   #updateSection() {
     const viewTransition = !this.closest('dialog');
+    let renderPromise;
 
     if (viewTransition) {
-      startViewTransition(() => sectionRenderer.renderSection(this.sectionId), ['product-grid']);
+      renderPromise = startViewTransition(() => sectionRenderer.renderSection(this.sectionId), ['product-grid']);
     } else {
-      sectionRenderer.renderSection(this.sectionId);
+      renderPromise = sectionRenderer.renderSection(this.sectionId);
     }
+
+    renderPromise.then(() => {
+      document.querySelectorAll('facets-form-component').forEach((component) => {
+        if (component instanceof FacetsFormComponent) component.syncCollectionState();
+      });
+    });
   }
 
   /**
@@ -227,6 +267,12 @@ class FacetsFormComponent extends Component {
 if (!customElements.get('facets-form-component')) {
   customElements.define('facets-form-component', FacetsFormComponent);
 }
+
+window.addEventListener('pageshow', () => {
+  document.querySelectorAll('facets-form-component').forEach((component) => {
+    if (component instanceof FacetsFormComponent) component.syncCollectionState();
+  });
+});
 
 /**
  * @typedef {Object} FacetInputsRefs

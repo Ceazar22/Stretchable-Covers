@@ -2467,9 +2467,21 @@
     const navItems = document.querySelectorAll('.custom-nav-item.has-dropdown');
     const desktopBreakpoint = window.matchMedia('(min-width: 901px)');
     const steeringCollectionPath = '/collections/steering-wheel-covers';
+    const collectionCategoryByPath = {
+      '/collections/steering-wheel-covers': 'Steering Wheel Covers',
+      '/collections/boat-steering-wheel-covers': 'Boat / Marine Steering Wheel Covers',
+      '/collections/band-instrument-bell-covers': 'Band Instrument Bell Covers',
+      '/collections/fleet-safety-message-covers': 'Fleet Safety Message Covers',
+      '/collections/shop-safety-message-covers': 'Shop Safety Message Covers'
+    };
 
     function buildURLWithChildFilters(item, trigger) {
       const baseUrl = new URL(trigger.href, window.location.origin);
+      const mappedCategory = collectionCategoryByPath[normalizePath(baseUrl.pathname)];
+      if (mappedCategory) {
+        baseUrl.searchParams.set('filter.p.m.custom.collections', mappedCategory);
+        return baseUrl.toString();
+      }
       if (normalizePath(baseUrl.pathname) !== steeringCollectionPath) {
         return baseUrl.toString();
       }
@@ -2561,7 +2573,24 @@
       const normalized = pathname.replace(/\/+$/, '');
       return normalized === '' ? '/' : normalized;
     }
-  
+
+    document
+      .querySelectorAll('.custom-header-wrapper a[href], #mobileNavDrawer a[href]')
+      .forEach(function (link) {
+        let linkUrl;
+        try {
+          linkUrl = new URL(link.href, window.location.origin);
+        } catch (_error) {
+          return;
+        }
+
+        const mappedCategory = collectionCategoryByPath[normalizePath(linkUrl.pathname)];
+        if (!mappedCategory) return;
+
+        linkUrl.searchParams.set('filter.p.m.custom.collections', mappedCategory);
+        link.href = linkUrl.toString();
+      });
+
     function isRealLink(href) {
       if (!href) return false;
   
