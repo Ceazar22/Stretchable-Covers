@@ -151,7 +151,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "class": "bryan",
+            "class": "red",
             "text": "<p>Note: If you would like to send us higher-resolution artwork or vector files such as CorelDRAW (.CDR), Adobe Illustrator (.AI), PDF, EPS, etc., please send them directly to:<a href=\"mailto:art@stretchablecovers.com\" target=\"_blank\" title=\"mailto:art@stretchablecovers.com\"><em>art@stretchablecovers.com</em></a></p>",
             "width": "fit-content",
             "max_width": "normal",

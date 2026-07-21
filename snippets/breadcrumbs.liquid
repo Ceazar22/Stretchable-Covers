@@ -49,7 +49,12 @@
         {%- when 'collection' -%}
           <li class="breadcrumbs__separator" aria-hidden="true">{{ crumb_separator }}</li>
           <li class="breadcrumbs__item">
-            <span class="breadcrumbs__current" aria-current="page">{{ collection.title | escape }}</span>
+            <span
+              class="breadcrumbs__current"
+              aria-current="page"
+              data-collection-filter-breadcrumb
+              data-default-title="{{ collection.title | escape }}"
+            >{{ collection.title | escape }}</span>
           </li>
 
         {%- when 'product' -%}

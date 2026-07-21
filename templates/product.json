@@ -141,6 +141,7 @@
                   "type": "text",
                   "name": "Product title",
                   "settings": {
+                    "class": "",
                     "text": "<h1>{{ closest.product.title }}</h1>",
                     "logo_image": "shopify://shop_images/fast_delivery.png",
                     "width": "100%",
@@ -218,6 +219,34 @@
                 "variant_style": "dropdowns",
                 "show_swatches": false,
                 "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_bQ8mDU": {
+              "type": "text",
+              "name": "t:names.text",
+              "disabled": true,
+              "settings": {
+                "class": "red",
+                "text": "<p>Note: If you would like to send us higher-resolution artwork or vector files such as CorelDRAW (.CDR), Adobe Illustrator (.AI), PDF, EPS, etc., please send them directly to:<a href=\"mailto:art@stretchablecovers.com\" target=\"_blank\" title=\"mailto:art@stretchablecovers.com\"><em>art@stretchablecovers.com</em></a></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -320,12 +349,12 @@
                 "author": "Michael H. - ESP Networks Production Manager",
                 "star_count": 5,
                 "review_label": "Verified Review",
-                "quote_2": "All the customizable bell covers come out amazing! Thank you! Thanks for getting it done so quickly!",
-                "author_2": "Michael H. - ESP Networks Production Manager",
+                "quote_2": "Hello. This is probably my 9th bell cover that I've ordered from you, and I love them all! Thanks.",
+                "author_2": "Lee Urban",
                 "star_count_2": 5,
                 "review_label_2": "Verified Review",
-                "quote_3": "",
-                "author_3": "",
+                "quote_3": "The highest quality product and service - every time! Even my small orders get prompt attention and processing. Thanks - Stretchable Covers!",
+                "author_3": "Jerry Embree",
                 "star_count_3": 5,
                 "review_label_3": "Verified Review",
                 "autoplay": true,
@@ -365,6 +394,7 @@
                       "type": "text",
                       "name": "Product description",
                       "settings": {
+                        "class": "",
                         "text": "{{ closest.product.description }}",
                         "width": "100%",
                         "max_width": "normal",
@@ -404,6 +434,7 @@
                     "text_Aaaty7": {
                       "type": "text",
                       "settings": {
+                        "class": "",
                         "text": "<p>{{ closest.product.metafields.custom.important_printing_note | metafield_tag }}</p>",
                         "width": "100%",
                         "max_width": "normal",
@@ -443,6 +474,7 @@
                     "text_Dqpam9": {
                       "type": "text",
                       "settings": {
+                        "class": "",
                         "text": "<p></p>",
                         "width": "100%",
                         "max_width": "normal",
@@ -482,6 +514,7 @@
                     "text_dHtD7r": {
                       "type": "text",
                       "settings": {
+                        "class": "",
                         "text": "<p>{{ closest.product.metafields.custom.how_to_measure | metafield_tag }}</p>",
                         "width": "100%",
                         "max_width": "normal",
@@ -522,6 +555,7 @@
                     "text_r8PefT": {
                       "type": "text",
                       "settings": {
+                        "class": "",
                         "text": "<p>{{ closest.product.metafields.custom.materials_used | metafield_tag }}</p>",
                         "width": "100%",
                         "max_width": "normal",
@@ -586,6 +620,7 @@
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_R3rGDr",
+            "text_bQ8mDU",
             "buy_buttons_eYQEYi",
             "divider_LdbDi9",
             "product_info_grid_B8eVAV",

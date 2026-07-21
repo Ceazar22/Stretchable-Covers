@@ -5,6 +5,12 @@ span.custom-cover-customizer__dropzone-note p,
 span.custom-cover-customizer__dropzone-note a {
     color: #da0004;
 }
+rte-formatter.red {
+    color: #da0004 !important;
+}
+rte-formatter.red a{
+    color: #da0004 !important;
+}
 * {
   box-sizing: border-box;
 }
