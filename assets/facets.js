@@ -8,6 +8,8 @@ import { convertMoneyToMinorUnits, formatMoney } from '@theme/money-formatting';
  * @type {string}
  */
 const SEARCH_QUERY = 'q';
+const COLLECTION_CATEGORY_FILTER = 'filter.p.m.custom.collections';
+const DYNAMIC_HEADING_COLLECTION = 'all-items-1';
 
 /**
  * Handles the main facets form functionality
@@ -23,6 +25,7 @@ class FacetsFormComponent extends Component {
 
   connectedCallback() {
     super.connectedCallback();
+    this.#syncCollectionHeading();
     this.#autoSelectCollectionCategoryWithChildren();
   }
 
@@ -78,11 +81,52 @@ class FacetsFormComponent extends Component {
   /**
    * Updates filters and renders the section
    */
-  updateFilters = () => {
+  updateFilters = (changedInput) => {
     this.#updateURLHash();
+    this.#syncCollectionHeading(this.createURLParameters(), changedInput);
     this.dispatchEvent(new FilterUpdateEvent(this.createURLParameters()));
     this.#updateSection();
   };
+
+  /**
+   * Keeps the collection heading outside the asynchronously rendered product
+   * grid in sync with the selected category.
+   *
+   * @param {URLSearchParams} [urlParameters]
+   * @param {EventTarget | null} [changedInput]
+   */
+  #syncCollectionHeading(urlParameters = this.createURLParameters(), changedInput = null) {
+    const segments = window.location.pathname.split('/').filter(Boolean);
+    if (segments[0] !== 'collections' || segments[1] !== DYNAMIC_HEADING_COLLECTION) return;
+
+    const heading = document.querySelector('#MainContent h1, main h1');
+    if (!(heading instanceof HTMLElement)) return;
+
+    const categoryTitles = urlParameters.getAll(COLLECTION_CATEGORY_FILTER).filter(Boolean);
+    const currentTitle = heading.textContent?.trim() ?? '';
+    let selectedTitle = '';
+
+    if (
+      changedInput instanceof HTMLInputElement &&
+      changedInput.name === COLLECTION_CATEGORY_FILTER &&
+      changedInput.checked
+    ) {
+      selectedTitle = changedInput.value;
+    } else if (categoryTitles.includes(currentTitle)) {
+      // Preserve the last category the shopper chose when several are active.
+      selectedTitle = currentTitle;
+    } else {
+      selectedTitle = categoryTitles.at(-1) ?? '';
+    }
+
+    const defaultTitle = 'All Items';
+    const title = selectedTitle || defaultTitle;
+    heading.textContent = title;
+
+    document.querySelectorAll('[data-collection-filter-breadcrumb]').forEach((breadcrumb) => {
+      if (breadcrumb instanceof HTMLElement) breadcrumb.textContent = title;
+    });
+  }
 
   /**
    * Auto-select the collection category filter and its child values when landing
@@ -174,6 +218,7 @@ class FacetsFormComponent extends Component {
    */
   updateFiltersByURL(url) {
     history.pushState('', '', url);
+    this.#syncCollectionHeading(new URL(url, window.location.origin).searchParams);
     this.dispatchEvent(new FilterUpdateEvent(this.createURLParameters()));
     this.#updateSection();
   }
@@ -202,12 +247,13 @@ class FacetInputsComponent extends Component {
   /**
    * Updates filters and the selected facet summary
    */
-  updateFilters() {
+  updateFilters(event) {
     const facetsForm = this.closest('facets-form-component');
 
     if (!(facetsForm instanceof FacetsFormComponent)) return;
 
-    facetsForm.updateFilters();
+    const changedInput = event?.composedPath?.()[0];
+    facetsForm.updateFilters(changedInput);
     this.#updateSelectedFacetSummary();
   }
 
