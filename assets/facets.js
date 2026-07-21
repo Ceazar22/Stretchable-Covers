@@ -96,11 +96,33 @@ class FacetsFormComponent extends Component {
    * Updates filters and renders the section
    */
   updateFilters = (changedInput) => {
+    this.#enforceSingleCategory(changedInput);
     this.#updateURLHash();
     this.#syncCollectionHeading(this.createURLParameters(), changedInput);
     this.dispatchEvent(new FilterUpdateEvent(this.createURLParameters()));
     this.#updateSection();
   };
+
+  /**
+   * Category filters use checkboxes for styling, but behave as a single-select group.
+   *
+   * @param {EventTarget | null} changedInput
+   */
+  #enforceSingleCategory(changedInput) {
+    if (
+      !(changedInput instanceof HTMLInputElement) ||
+      changedInput.name !== COLLECTION_CATEGORY_FILTER ||
+      !changedInput.checked
+    ) {
+      return;
+    }
+
+    this.refs.facetsForm
+      .querySelectorAll(`input[type="checkbox"][name="${COLLECTION_CATEGORY_FILTER}"]`)
+      .forEach((input) => {
+        if (input instanceof HTMLInputElement && input !== changedInput) input.checked = false;
+      });
+  }
 
   /**
    * Keeps the collection heading outside the asynchronously rendered product
@@ -158,16 +180,15 @@ class FacetsFormComponent extends Component {
     );
     if (!categoryInputs.length) return;
 
-    const activeCategoryValues = url.searchParams
-      .getAll(COLLECTION_CATEGORY_FILTER)
-      .map((value) => this.#normalizeFilterText(value));
+    const activeCategoryValues = url.searchParams.getAll(COLLECTION_CATEGORY_FILTER);
 
     if (activeCategoryValues.length) {
+      const activeCategoryValue = this.#normalizeFilterText(activeCategoryValues.at(-1) || '');
       categoryInputs.forEach((input) => {
         if (!(input instanceof HTMLInputElement)) return;
         const inputValue = this.#normalizeFilterText(input.value);
         const inputLabel = this.#normalizeFilterText(input.labels?.[0]?.textContent || '');
-        input.checked = activeCategoryValues.includes(inputValue) || activeCategoryValues.includes(inputLabel);
+        input.checked = inputValue === activeCategoryValue || inputLabel === activeCategoryValue;
       });
       return;
     }
@@ -196,18 +217,6 @@ class FacetsFormComponent extends Component {
     if (!parentInput.checked) {
       parentInput.checked = true;
       didChange = true;
-    }
-
-    const parentItem = parentInput.closest('li.facets__inputs-list-item');
-    let sibling = parentItem?.nextElementSibling;
-
-    while (sibling instanceof HTMLElement && sibling.classList.contains('facets__inputs-list-item--category-child')) {
-      const childInput = sibling.querySelector('input[type="checkbox"][name="filter.p.m.custom.collections"]');
-      if (childInput instanceof HTMLInputElement && !childInput.checked && !childInput.disabled) {
-        childInput.checked = true;
-        didChange = true;
-      }
-      sibling = sibling.nextElementSibling;
     }
 
     if (didChange) {
