@@ -1,0 +1,19 @@
+<article class="product-testimonial__card" {{ block.shopify_attributes }}>
+  <div class="product-testimonial__quote-mark" aria-hidden="true">“</div>
+  <div class="product-testimonial__quote">{{ block.settings.quote }}</div>
+  {% if block.settings.author != blank %}<p class="product-testimonial__author">{{ block.settings.author }}</p>{% endif %}
+  {% if block.settings.role != blank %}<p class="product-testimonial__role">{{ block.settings.role }}</p>{% endif %}
+</article>
+
+{% schema %}
+{
+  "name": "Testimonial",
+  "tag": null,
+  "settings": [
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "Share what a customer said about your product." },
+    { "type": "text", "id": "author", "label": "Author", "default": "Customer name" },
+    { "type": "text", "id": "role", "label": "Role or company" }
+  ],
+  "presets": [{ "name": "Testimonial" }]
+}
+{% endschema %}

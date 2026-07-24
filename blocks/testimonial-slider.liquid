@@ -1,0 +1,66 @@
+<div
+  id="ProductTestimonial-{{ block.id }}"
+  class="product-testimonial"
+  style="--testimonial-bg: {{ block.settings.background }}; --testimonial-card-bg: {{ block.settings.card_background }};"
+  {{ block.shopify_attributes }}
+>
+  <div class="product-testimonial__intro">
+    {% if block.settings.trusted_text != blank %}<p class="product-testimonial__trusted">★★★★★ &nbsp; {{ block.settings.trusted_text }}</p>{% endif %}
+    {% if block.settings.heading != blank %}<h2>{{ block.settings.heading }}</h2>{% endif %}
+    {% if block.settings.description != blank %}<div class="product-testimonial__description">{{ block.settings.description }}</div>{% endif %}
+    <div class="product-testimonial__controls">
+      <button type="button" data-testimonial-prev aria-label="Previous testimonial">‹</button>
+      <button type="button" data-testimonial-next aria-label="Next testimonial">›</button>
+    </div>
+  </div>
+  <div class="product-testimonial__viewport" data-testimonial-viewport>
+    <div class="product-testimonial__track">{% content_for 'blocks' %}</div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .product-testimonial { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(220px, 32%) 1fr; gap: 32px; padding: 48px; background: var(--testimonial-bg); overflow: hidden; }
+  .product-testimonial__intro h2 { margin: 10px 0; color: #0f2e53; }
+  .product-testimonial__trusted { color: #eb891b; font-weight: 700; }
+  .product-testimonial__description { color: #666; }
+  .product-testimonial__controls { display: flex; gap: 10px; margin-top: 24px; }
+  .product-testimonial__controls button { width: 42px; height: 42px; border: 1px solid #d5d5d5; border-radius: 50%; background: #fff; color: #0f2e53; cursor: pointer; font-size: 28px; line-height: 1; }
+  .product-testimonial__viewport { min-width: 0; overflow: hidden; }
+  .product-testimonial__track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .product-testimonial__track::-webkit-scrollbar { display: none; }
+  .product-testimonial__card { flex: 0 0 min(360px, 80%); min-height: 260px; padding: 28px; border: 1px solid #ececec; border-radius: 12px; background: var(--testimonial-card-bg); scroll-snap-align: start; }
+  .product-testimonial__quote-mark { color: #eb891b; font-size: 54px; line-height: .7; text-align: right; }
+  .product-testimonial__quote { color: #444; line-height: 1.6; }
+  .product-testimonial__author { margin: 24px 0 0; font-weight: 700; }
+  .product-testimonial__role { margin: 3px 0 0; color: #777; }
+  @media (max-width: 749px) { .product-testimonial { grid-template-columns: 1fr; padding: 32px 20px; } .product-testimonial__card { flex-basis: 88%; } }
+{% endstylesheet %}
+
+<script>
+  (() => {
+    const root = document.getElementById('ProductTestimonial-{{ block.id }}');
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const viewport = root.querySelector('[data-testimonial-viewport]');
+    const card = root.querySelector('.product-testimonial__card');
+    const move = (direction) => viewport?.scrollBy({ left: direction * ((card?.offsetWidth || 320) + 16), behavior: 'smooth' });
+    root.querySelector('[data-testimonial-prev]')?.addEventListener('click', () => move(-1));
+    root.querySelector('[data-testimonial-next]')?.addEventListener('click', () => move(1));
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial slider",
+  "tag": null,
+  "blocks": [{ "type": "_testimonial-slide" }],
+  "settings": [
+    { "type": "text", "id": "trusted_text", "label": "Trusted text", "default": "Trusted by 450,000+ customers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why Our Customers Keep Coming Back" },
+    { "type": "richtext", "id": "description", "label": "Description", "default": "<p>Stories and honest experiences from the people we serve.</p>" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#f7f7f7" },
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#ffffff" }
+  ],
+  "presets": [{ "name": "Testimonial slider", "blocks": [{ "type": "_testimonial-slide" }, { "type": "_testimonial-slide" }, { "type": "_testimonial-slide" }] }]
+}
+{% endschema %}
