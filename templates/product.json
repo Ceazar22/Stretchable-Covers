@@ -628,6 +628,38 @@
             "accordion_UF6wpm",
             "custom_accordion_JMM7jD"
           ]
+        },
+        "testimonial_slider_product": {
+          "type": "testimonial-slider",
+          "name": "Testimonial slider",
+          "settings": {
+            "trusted_text": "Trusted by 450,000+ customers",
+            "heading": "Why Our Customers Keep Coming Back",
+            "description": "<p>Stories and honest experiences from the people we serve.</p>",
+            "background": "#ffffff",
+            "card_background": "#ffffff"
+          },
+          "blocks": {
+            "testimonial_product_1": {
+              "type": "_testimonial-slide",
+              "settings": {
+                "quote": "WOW!! You guys are awesome! The bell covers arrived and are perfect!",
+                "author": "Cathy Powell",
+                "role": "University Health Care System"
+              },
+              "blocks": {}
+            },
+            "testimonial_product_2": {
+              "type": "_testimonial-slide",
+              "settings": {
+                "quote": "Love the waterproof exam stool covers! We'll be ordering many more.",
+                "author": "Marilyn Thomas",
+                "role": "University Health Care System"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["testimonial_product_1", "testimonial_product_2"]
         }
       },
       "settings": {
@@ -1342,6 +1374,7 @@
     },
     "custom_section_testimonial_aGKFWw": {
       "type": "custom-section-testimonial",
+      "disabled": true,
       "blocks": {
         "testimonial_EqBHXC": {
           "type": "testimonial",
